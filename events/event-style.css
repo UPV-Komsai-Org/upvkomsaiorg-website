@@ -18,8 +18,19 @@
     --font-heading: 1.5rem;
     --font-title: 2rem;
 
+    /* Calendar variables */
+    --fc-border-color: #f0f0f0;
+    --fc-button-bg-color: transparent;
+    --fc-button-border-color: transparent;
+    --fc-button-text-color: #888888;
+    --fc-button-hover-bg-color: #f9f9f9;
+    --fc-button-hover-border-color: transparent;
+    --fc-button-active-bg-color: #eeeeee;
+    --fc-button-active-border-color: transparent;
+    --fc-today-bg-color: #fcfcfc;
+
+
     font-size: 16px;
-    font-family: var(--font-family-default);
     line-height: 1.5;
     font-weight: var(--fw-regular);
 
@@ -30,12 +41,14 @@
 }
 
 * {
+    font-family: var(--font-family-default);
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
 body {
+    
     padding-top: 1em;
     margin: 0 auto;
 }
@@ -100,7 +113,7 @@ body.events main {
     }
 
     .latest-event-description {
-        margin-block: 32px;
+        margin-block: 16px 32px;
     }        
 
     .latest-event-img {
@@ -149,7 +162,6 @@ body.events main {
 
     .prev-event-title {
         font-size: var(--font-heading);
-        padding-block-start: 1em;
     }
     
     .prev-event-datetime .small-circle {
@@ -164,6 +176,75 @@ body.events main {
     .prev-event-description {
         margin-block: 16px;
     }
+
+    .calendar-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .calendar-heading {
+        font-size: var(--font-title);
+        font-weight: var(--font-weight-bold);
+        margin-right: 32px;
+    }
+    
+    #calendar {
+        width: 80%;
+        margin: auto;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.25rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+    }
+
+    .fc .fc-col-header-cell {
+        border-bottom: 1px solid #eee !important;
+        padding-bottom: 10px;
+     }
+
+    .fc .fc-col-header-cell-cushion {
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: #aaa;
+    }
+
+    .fc-event {
+        background-color: var(--color-dark) !important; /* Very light blue/gray */
+        border: none !important;
+        padding: 4px 8px !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 2px !important;
+        border-radius: 4px !important;
+    }
+
+    .fc-event-title {
+        color: white;
+    }
+
+    .fc-event-time {
+        display: none;
+    }
+
+    .fc .fc-day-today {
+        background: transparent !important;
+    }
+
+    .fc .fc-day-today .fc-daygrid-day-number {
+        background: #000;
+        color: #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 4px;
+    }
+
+
 }
 
 body.event-details main {
