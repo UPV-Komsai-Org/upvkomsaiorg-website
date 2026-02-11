@@ -1,0 +1,174 @@
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Light theme */
+  --background: 0 0% 100%;
+  --foreground: 210 10% 10%;
+  --muted: 210 10% 50%;
+  --muted-foreground: 210 10% 30%;
+  --border: 210 10% 90%;
+  --input: 210 10% 90%;
+  --primary: 210 10% 10%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 210 10% 30%;
+
+  /* Dark theme */
+  --dark-background: 210 10% 10%;
+  --dark-foreground: 0 0% 100%;
+  --dark-muted: 210 10% 30%;
+  --dark-muted-foreground: 210 10% 60%;
+  --dark-border: 210 10% 20%;
+  --dark-input: 210 10% 20%;
+  --dark-primary: 0 0% 100%;
+  --dark-primary-foreground: 210 10% 10%;
+  --dark-ring: 210 10% 60%;
+}
+
+:root[data-theme="dark"] {
+  --background: var(--dark-background);
+  --foreground: var(--dark-foreground);
+  --muted: var(--dark-muted);
+  --muted-foreground: var(--dark-muted-foreground);
+  --border: var(--dark-border);
+  --input: var(--dark-input);
+  --primary: var(--dark-primary);
+  --primary-foreground: var(--dark-primary-foreground);
+  --ring: var(--dark-ring);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--dark-background);
+    --foreground: var(--dark-foreground);
+    --muted: var(--dark-muted);
+    --muted-foreground: var(--dark-muted-foreground);
+    --border: var(--dark-border);
+    --input: var(--dark-input);
+    --primary: var(--dark-primary);
+    --primary-foreground: var(--dark-primary-foreground);
+    --ring: var(--dark-ring);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-weight: 400;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease;
+}
+
+button:hover {
+  filter: brightness(0.9);
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring));
+}
+
+input,
+textarea,
+select {
+  border-radius: var(--radius-sm);
+  border: 1px solid hsl(var(--input));
+  padding: 0.5rem 0.75rem;
+  background: hsl(var(--background));
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring));
+}
