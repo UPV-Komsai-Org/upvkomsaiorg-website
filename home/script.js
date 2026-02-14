@@ -1,18 +1,18 @@
 // Mobile Navigation Toggle
 const navToggle = document.getElementById("navToggle");
-const navMenu = document.getElementById("navMenu");
+const navActions = document.querySelector(".nav-actions");
 
-if (navToggle && navMenu) {
+if (navToggle && navActions) {
   navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
+    navActions.classList.toggle("active");
     navToggle.classList.toggle("active");
   });
 
   // Close menu when clicking on a link
-  const navLinks = navMenu.querySelectorAll(".nav-link");
+  const navLinks = navActions.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      navMenu.classList.remove("active");
+      navActions.classList.remove("active");
       navToggle.classList.remove("active");
     });
   });
@@ -21,10 +21,10 @@ if (navToggle && navMenu) {
   document.addEventListener("click", (e) => {
     if (
       !navToggle.contains(e.target) &&
-      !navMenu.contains(e.target) &&
-      navMenu.classList.contains("active")
+      !navActions.contains(e.target) &&
+      navActions.classList.contains("active")
     ) {
-      navMenu.classList.remove("active");
+      navActions.classList.remove("active");
       navToggle.classList.remove("active");
     }
   });
@@ -46,3 +46,42 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
+
+// Theme Toggle
+const themeToggle = document.getElementById("themeToggle");
+const themeLabel = themeToggle?.querySelector(".theme-label");
+const root = document.documentElement;
+
+// Check for saved theme preference or default to system preference
+const getPreferredTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    return savedTheme;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+// Set theme
+const setTheme = (theme) => {
+  root.setAttribute("data-theme", theme);
+  if (theme === "dark") {
+    if (themeLabel) themeLabel.textContent = "Light";
+  } else {
+    if (themeLabel) themeLabel.textContent = "Dark";
+  }
+  localStorage.setItem("theme", theme);
+};
+
+// Initialize theme
+setTheme(getPreferredTheme());
+
+// Toggle theme
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = root.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  });
+}
