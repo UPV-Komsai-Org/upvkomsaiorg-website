@@ -3,29 +3,211 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="The homepage of the Komsai.Org" />
-    <title>Home</title>
+    <meta
+      name="description"
+      content="Komsai.Org - The official organization of Computer Science students at the University of the Philippines"
+    />
+    <title>Home - Komsai.Org</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Home</h1>
-    </header>
-
-    <main>
-      <div>
-        <p>Value: <span id="counter">0</span></p>
-        <button id="increment">Click me</button>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">Komsai.Org</a>
+        </div>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li>
+            <a href="../about-us/index.html" class="nav-link">About Us</a>
+          </li>
+          <li><a href="../events/index.html" class="nav-link">Events</a></li>
+          <li><a href="../news-corner/index.html" class="nav-link">News</a></li>
+        </ul>
       </div>
+    </nav>
 
-      <div>
-        <input type="text" placeholder="Type here..." />
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1 class="hero-title">Welcome to Komsai.Org</h1>
+        <p class="hero-subtitle">
+          The official organization of Computer Science students at the
+          University of the Philippines
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary">Join Us</button>
+          <button class="btn-secondary">Learn More</button>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <footer>
-      <p>&copy; 2026 Komsai.Org</p>
+    <!-- About Section -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2 class="section-title">About Komsai.Org</h2>
+        <p class="section-description">
+          Komsai.Org is the premier organization for Computer Science students
+          at the University of the Philippines. We are dedicated to fostering a
+          community of passionate individuals who share a love for technology,
+          innovation, and academic excellence.
+        </p>
+        <div class="stats">
+          <div class="stat-item">
+            <h3 class="stat-value">500+</h3>
+            <p class="stat-label">Active Members</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-value">50+</h3>
+            <p class="stat-label">Events Annually</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-value">10+</h3>
+            <p class="stat-label">Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3 class="feature-title">Workshops & Training</h3>
+            <p class="feature-description">
+              Regular workshops on cutting-edge technologies, programming
+              languages, and industry practices to enhance your technical
+              skills.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3 class="feature-title">Networking Events</h3>
+            <p class="feature-description">
+              Connect with fellow students, alumni, and industry professionals
+              through our networking events and career fairs.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3 class="feature-title">Competitions</h3>
+            <p class="feature-description">
+              Participate in hackathons, programming contests, and technical
+              challenges to test and improve your skills.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3 class="feature-title">Community Projects</h3>
+            <p class="feature-description">
+              Collaborate on open-source projects and community initiatives that
+              make a real-world impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Preview -->
+    <section class="section events-preview" id="events-preview">
+      <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="event-list">
+          <div class="event-card">
+            <div class="event-date">
+              <span class="event-month">Mar</span>
+              <span class="event-day">15</span>
+            </div>
+            <div class="event-details">
+              <h3 class="event-title">Web Development Workshop</h3>
+              <p class="event-description">
+                Learn modern web development techniques and frameworks.
+              </p>
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-date">
+              <span class="event-month">Apr</span>
+              <span class="event-day">02</span>
+            </div>
+            <div class="event-details">
+              <h3 class="event-title">Annual Hackathon 2026</h3>
+              <p class="event-description">
+                24-hour coding challenge with amazing prizes.
+              </p>
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-date">
+              <span class="event-month">Apr</span>
+              <span class="event-day">20</span>
+            </div>
+            <div class="event-details">
+              <h3 class="event-title">Career Fair</h3>
+              <p class="event-description">
+                Meet with top tech companies and explore career opportunities.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="../events/index.html" class="btn-link">View All Events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Komsai.Org</h3>
+            <p class="footer-description">
+              Official organization of Computer Science students at the
+              University of the Philippines.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="../about-us/index.html">About Us</a></li>
+              <li><a href="../events/index.html">Events</a></li>
+              <li><a href="../news-corner/index.html">News</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-heading">Connect</h4>
+            <ul class="footer-links">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-heading">Contact</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:contact@komsai.org">contact@komsai.org</a>
+              </li>
+              <li>University of the Philippines</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Komsai.Org. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js" defer></script>
