@@ -1,87 +1,92 @@
-// Mobile Navigation Toggle
 const navToggle = document.getElementById("navToggle");
 const navActions = document.querySelector(".nav-actions");
+const themeToggle = document.getElementById("themeToggle");
+const themeLabel = themeToggle?.querySelector(".theme-label");
+const root = document.documentElement;
+const THEME_KEY = "theme";
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+const getSavedTheme = () => {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const saveTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Ignore storage errors and keep session-level theme only.
+  }
+};
+
+const applyTheme = (theme) => {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  root.setAttribute("data-theme", nextTheme);
+  if (themeLabel) {
+    themeLabel.textContent = nextTheme === "dark" ? "Light Mode" : "Dark Mode";
+  }
+};
+
+const initialTheme = getSavedTheme() ?? (darkQuery.matches ? "dark" : "light");
+applyTheme(initialTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = root.getAttribute("data-theme");
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    saveTheme(nextTheme);
+  });
+}
+
+const handleSystemThemeChange = (event) => {
+  if (!getSavedTheme()) {
+    applyTheme(event.matches ? "dark" : "light");
+  }
+};
+
+if (typeof darkQuery.addEventListener === "function") {
+  darkQuery.addEventListener("change", handleSystemThemeChange);
+} else if (typeof darkQuery.addListener === "function") {
+  darkQuery.addListener(handleSystemThemeChange);
+}
 
 if (navToggle && navActions) {
   navToggle.addEventListener("click", () => {
     navActions.classList.toggle("active");
-    navToggle.classList.toggle("active");
   });
 
-  // Close menu when clicking on a link
   const navLinks = navActions.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       navActions.classList.remove("active");
-      navToggle.classList.remove("active");
     });
   });
 
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (
-      !navToggle.contains(e.target) &&
-      !navActions.contains(e.target) &&
-      navActions.classList.contains("active")
-    ) {
+  document.addEventListener("click", (event) => {
+    const clickedOutsideMenu =
+      !navToggle.contains(event.target) && !navActions.contains(event.target);
+
+    if (clickedOutsideMenu && navActions.classList.contains("active")) {
       navActions.classList.remove("active");
-      navToggle.classList.remove("active");
     }
   });
 }
 
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
-    if (href !== "#" && href.length > 1) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+  anchor.addEventListener("click", (event) => {
+    const href = anchor.getAttribute("href");
+    if (!href || href === "#") {
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 });
-
-// Theme Toggle
-const themeToggle = document.getElementById("themeToggle");
-const themeLabel = themeToggle?.querySelector(".theme-label");
-const root = document.documentElement;
-
-// Check for saved theme preference or default to system preference
-const getPreferredTheme = () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    return savedTheme;
-  }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-
-// Set theme
-const setTheme = (theme) => {
-  root.setAttribute("data-theme", theme);
-  if (theme === "dark") {
-    if (themeLabel) themeLabel.textContent = "Light";
-  } else {
-    if (themeLabel) themeLabel.textContent = "Dark";
-  }
-  localStorage.setItem("theme", theme);
-};
-
-// Initialize theme
-setTheme(getPreferredTheme());
-
-// Toggle theme
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const currentTheme = root.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-  });
-}
