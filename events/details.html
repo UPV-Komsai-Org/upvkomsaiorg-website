@@ -3,38 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPV Komsai.org</title>
-    <link rel="stylesheet" href="event-style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta
+      name="description"
+      content="Komsai.Org - The official organization of Computer Science students at the University of the Philippines"
+    />
+    <title>Event Details - Komsai.Org</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 <body class="event-details">
-    <header class="flex-row">
-        <div class="flex-row header-brand">
-            <img src="images/komsai-logo.jpg" alt="logo" class="logo">
-            <span class="title">UPV KOMSAI.ORG</span>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">Komsai.Org</a>
         </div>
-          <nav class="flex-row">
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="./" class="current-page-navigation-link">Events</a>
-            <a href="#">About Us</a>
-        </nav>
-    </header>
+        <div class="nav-actions">
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../home/" class="nav-link">Home</a></li>
+            <li><a href="#video" class="nav-link">Video</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="./" class="nav-link">Events</a></li>
+            <li><a href="#contacts" class="nav-link">Contacts</a></li>
+          </ul>
+        </div>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <span class="theme-label">Dark Mode</span>
+        </button>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
 
     <main class="flex-col">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Taken from https://www.w3schools.com/bootstrap/bootstrap_carousel.asp -->
-
-            <!-- Indicators -->
+        <!---
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
 
-            <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
                     <img src="images/test-image.png" alt="Komsai Pic #1">
@@ -49,7 +72,6 @@
                 </div>
             </div>
 
-            <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 <span class="sr-only">Previous</span>
@@ -58,7 +80,10 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+        -->
+            <img src="./images/test-image.png"/>
+        </div> 
+        
 
         <div class="displayed-event-container">
             <div class="flex-col displayed-event-card">
@@ -71,30 +96,41 @@
         </div>
     </main>
 
-    <footer class="flex-row">
-        <div class="footer-container">
-            <div class="flex-col footer-brand">
-                <img src="images/komsai-logo-no-bg.png" alt="komsai-logo" class="logo">
-                <span class="title">UPV Komsai.org</span>
-            </div>
-            <nav class="flex-col">
-                <a href="#">Home</a>
-                <a href="#">Projects</a>
-                <a href="./">Events</a>
-                <a href="#">About Us</a>
-            </nav>
-            <div class="flex-col footer-info">
-                <span>All Rights Reserved © 2021</span>
-                <span>College of Arts and Sciences | University of the Philippines Visayas</span>
-                <span>Miagao, Iloilo 5023</span>
-                
-                <div class="flex-row footer-socials">
-                    <a href="#"><img src="images/facebook-logo.png" alt="fb-logo"></a>
-                    <a href="#"><img src="images/instagram-logo.png" alt="ig-logo"></a>
-                    <a href="#"><img src="images/x-logo.png" alt="x-logo"></a>
-                </div>
-            </div>
+    <footer class="footer" id="contacts">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">Komsai.Org</h3>
+            <p class="footer-description">
+              Official organization of Computer Science students at the
+              University of the Philippines.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-heading">Events</h4>
+            <ul class="footer-links">
+              <li><a href="#events-preview">Web Development Workshop</a></li>
+              <li><a href="#events-preview">Annual Hackathon 2026</a></li>
+              <li><a href="#events-preview">Career Fair</a></li>
+              <li><a href="../events/">Full Event Calendar</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-heading">Contacts</h4>
+            <ul class="footer-links">
+              <li><a href="mailto:contact@komsai.org">contact@komsai.org</a></li>
+              <li><a href="tel:+639123456789">+63 912 345 6789</a></li>
+              <li>University of the Philippines Visayas</li>
+              <li>Iloilo City, Philippines</li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Komsai.Org. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
-</body>
+
+    <script src="./scripts/script.js" defer></script>
+  </body>
 </html>
