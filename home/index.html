@@ -19,10 +19,11 @@
         </div>
         <div class="nav-actions">
           <ul class="nav-menu" id="navMenu">
-            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="index.html" class="nav-link is-current" aria-current="page">Home</a></li>
             <li><a href="#video" class="nav-link">Video</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#events-preview" class="nav-link">Events</a></li>
+            <li><a href="../about-us/index.html" class="nav-link">About Us</a></li>
+            <li><a href="../events/index.html" class="nav-link">Events</a></li>
+            <li><a href="../news-corner/index.html" class="nav-link">News Corner</a></li>
             <li><a href="#contacts" class="nav-link">Contacts</a></li>
           </ul>
         </div>
@@ -48,16 +49,106 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="container">
-          <h1 class="hero-title">Welcome to Komsai.Org</h1>
-          <p class="hero-subtitle">
-            The official organization of Computer Science students at the
-            University of the Philippines Visayas.
-          </p>
-          <div class="hero-cta">
-            <a href="#about" class="btn-primary">Learn More</a>
-            <a href="#contacts" class="btn-secondary">Contact Us</a>
+        <div class="container hero-shell">
+          <div class="hero-copy">
+            <p class="hero-kicker">UPV Computer Science Organization</p>
+            <h1 class="hero-title">Build, connect, and launch with Komsai.Org</h1>
+            <p class="hero-subtitle">
+              The official organization of Computer Science students at the
+              University of the Philippines Visayas, bringing together builders,
+              researchers, designers, and future engineers.
+            </p>
+            <div class="hero-cta">
+              <a href="#about" class="btn-primary">Learn More</a>
+              <a href="../events/index.html" class="btn-secondary">Browse Events</a>
+            </div>
+            <div class="hero-highlights">
+              <div class="hero-highlight">
+                <span class="hero-highlight-value">500+</span>
+                <span class="hero-highlight-label">students in the network</span>
+              </div>
+              <div class="hero-highlight">
+                <span class="hero-highlight-value">50+</span>
+                <span class="hero-highlight-label">events, workshops, and talks yearly</span>
+              </div>
+              <div class="hero-highlight">
+                <span class="hero-highlight-value">10+</span>
+                <span class="hero-highlight-label">years of org growth and projects</span>
+              </div>
+            </div>
           </div>
+          <aside class="hero-panel" aria-label="Komsai overview">
+            <div class="hero-panel-card">
+              <p class="hero-panel-kicker">This semester</p>
+              <h2 class="hero-panel-title">A more active CS student community</h2>
+              <div class="hero-panel-list">
+                <div class="hero-panel-item">
+                  <span class="hero-panel-badge">Build</span>
+                  <p>Hands-on technical workshops that move from fundamentals to shipping.</p>
+                </div>
+                <div class="hero-panel-item">
+                  <span class="hero-panel-badge">Compete</span>
+                  <p>Hackathons and coding challenges that sharpen practical problem solving.</p>
+                </div>
+                <div class="hero-panel-item">
+                  <span class="hero-panel-badge">Belong</span>
+                  <p>Peer networks, org culture, and projects that keep members involved.</p>
+                </div>
+              </div>
+            </div>
+            <div class="hero-gallery" aria-label="Komsai photo gallery">
+              <img
+                class="hero-gallery-image"
+                src="public/komsai1.jpg"
+                alt="Komsai activity photo 1"
+                loading="lazy"
+              />
+              <img
+                class="hero-gallery-image"
+                src="public/komsai2.jpg"
+                alt="Komsai activity photo 2"
+                loading="lazy"
+              />
+              <img
+                class="hero-gallery-image"
+                src="public/komsai3.jpg"
+                alt="Komsai activity photo 3"
+                loading="lazy"
+              />
+              <img
+                class="hero-gallery-image"
+                src="public/komsai4.jpg"
+                alt="Komsai activity photo 4"
+                loading="lazy"
+              />
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="quick-links" aria-label="Quick access">
+        <div class="container quick-links-grid">
+          <a href="../about-us/index.html" class="quick-link-card">
+            <span class="quick-link-kicker">Who we are</span>
+            <strong class="quick-link-title">About Us</strong>
+            <span class="quick-link-text">
+              Meet the org, its purpose, and the people shaping Komsai.
+            </span>
+          </a>
+          <a href="../events/index.html" class="quick-link-card">
+            <span class="quick-link-kicker">What is next</span>
+            <strong class="quick-link-title">Events</strong>
+            <span class="quick-link-text">
+              Workshops, competitions, and campus activities happening this term.
+            </span>
+          </a>
+          <a href="../news-corner/index.html" class="quick-link-card">
+            <span class="quick-link-kicker">What is new</span>
+            <strong class="quick-link-title">News Corner</strong>
+            <span class="quick-link-text">
+              Updates, announcements, and org stories in one place.
+            </span>
+          </a>
         </div>
       </section>
 
