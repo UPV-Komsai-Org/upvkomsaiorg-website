@@ -8,7 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- THEME LOGIC ---
     const applyTheme = (theme) => {
         root.setAttribute("data-theme", theme);
-        if (themeLabel) themeLabel.textContent = theme === "dark" ? "Light Mode" : "Dark Mode";
+        const moonIcon = themeToggle?.querySelector(".theme-icon-moon");
+        const sunIcon = themeToggle?.querySelector(".theme-icon-sun");
+        if (moonIcon && sunIcon) {
+            if (theme === "dark") {
+                moonIcon.style.opacity = "1";
+                sunIcon.style.opacity = "0";
+            } else {
+                moonIcon.style.opacity = "0";
+                sunIcon.style.opacity = "1";
+            }
+        }
         localStorage.setItem("theme", theme);
     };
 
