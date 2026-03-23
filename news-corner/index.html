@@ -1,91 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Corner</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="News Corner - Komsai.Org" />
+    <title>News Corner - Komsai.Org</title>
+    <link rel="stylesheet" href="news-style.css" />
 </head>
 
 <body>
-    <header>
-        <div>
-            <img src="logo.png" alt="Komsai.org logo">
-            <h1>UPV Komsai.org</h1>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">Komsai.Org</a>
+            </div>
+            <div class="nav-actions">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#video" class="nav-link">Video</a></li>
+                    <li><a href="../about-us/index.html" class="nav-link">About Us</a></li>
+                    <li><a href="../events/index.html" class="nav-link">Events</a></li>
+                    <li><a href="../news-corner/index.html" class="nav-link is-current" aria-current="page">News Corner</a></li>
+                    <li><a href="#contacts" class="nav-link">Contacts</a></li>
+                </ul>
+            </div>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+                <span class="theme-label">Dark Mode</span>
+            </button>
+            <!-- <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button> -->
         </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="">Home</a>
-                </li>
-                <li>
-                    <a href="">Projects</a>
-                </li>
-                <li>
-                    <a href="">Events</a>
-                </li>
-                <li>
-                    <a href="">Students' Corner</a>
-                </li>
-                <li>
-                    <a href="">About Us</a>
-                </li>
-                <li>
-                    <a href="">Contact Us</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
 
-    <section class="hero"></section>
+    <main class="container news-page">
+        <header class="news-header">
+            <p class="hero-kicker">Updates & Announcements</p>
+            <h1 class="hero-title">News Corner</h1>
+            <p class="hero-subtitle">This is the official news corner of UPV Komsai.org.</p>
+        </header>
 
-    <main>
-    
-        <div class="top-grid">
-            <section class="featured">
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-                <p class="date">## Ago DD/MM/YYYY</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nam deleniti obcaecati velit aspernatur dolorem, quasi voluptatibus consequuntur laudantium cum ipsum dignissimos nostrum incidunt exercitationem illo itaque vitae, vel aliquam?</p>
-            </section>
-    
-            <section class="latest-news">
-                <img src="" alt="">
-                <h3>LATEST NEWS</h3>
-            </section>
-        </div>
-    
-        <div class="news-grid">
-            <article class="card">
-                <img src="" alt="">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <p class="date">## Ago DD/MM/YYYY</p>
+        <section class="featured-news">
+            <div class="featured-card">
+                <div class="featured-image">
+                    <img src="public/komsai1.jpg" alt="Featured News Image" />
+                </div>
+                <div class="featured-content">
+                    <span class="hero-panel-badge">Featured</span>
+                    <h2 class="featured-title">Komsai.Org attended CAS Fair</h2>
+                    <p class="date">March 23, 2026</p>
+                    <p class="featured-excerpt">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aliquid fuga dicta, suscipit adipisci explicabo sapiente officia minima nostrum facilis vel accusamus dolorem ex, quas aperiam incidunt eum exercitationem. Quae.
+                    </p>
+                    <a href="#" class="btn-primary">Read Full Story</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-grid">
+            <article class="news-card">
+                <img src="public/komsai1.jpg" alt="Article 1" class="news-card-img" />
+                <div class="news-card-body">
+                    <h3 class="news-card-title">Komsai.Org attended CAS Fair</h3>
+                    <p class="date">March 23, 2026</p>
+                    <p class="news-card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error iure maiores nobis delectus qui, sit minima officiis quis dolorum laboriosam nulla! Modi omnis corporis adipisci natus architecto totam corrupti fugiat?
+                        skills.</p>
+                    <a href="details.html" class="btn-link">Read More →</a>
+                </div>
             </article>
-    
-            <article class="card">
-                <img src="" alt="">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <p class="date">## Ago DD/MM/YYYY</p>
+
+            <article class="news-card">
+                <img src="public/komsai1.jpg" alt="Article 2" class="news-card-img" />
+                <div class="news-card-body">
+                    <h3 class="news-card-title">Komsai.Org attended CAS Fair</h3>
+                    <p class="date">March 23, 2026</p>
+                    <p class="news-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque cum itaque, odio, doloribus assumenda delectus libero voluptatum optio, est consectetur fuga explicabo quos quibusdam harum molestias. Assumenda cumque error obcaecati!</p>
+                    <a href="details.html" class="btn-link">Read More →</a>
+                </div>
             </article>
-    
-            <article class="card">
-                <img src="" alt="">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <p class="date">## Ago DD/MM/YYYY</p>
+
+            <article class="news-card">
+                <img src="public/komsai1.jpg" alt="Article 3" class="news-card-img" />
+                <div class="news-card-body">
+                    <h3 class="news-card-title">Komsai.Org attended CAS Fair</h3>
+                    <p class="date">March 23, 2026</p>
+                    <p class="news-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore consectetur perferendis explicabo, cum nisi eum laboriosam aperiam, repudiandae sit nobis, exercitationem nulla error? Quia quidem ea accusamus reiciendis provident earum?</p>
+                    <a href="details.html" class="btn-link">Read More →</a>
+                </div>
             </article>
-    
-            <article class="card">
-                <img src="" alt="">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <p class="date">## Ago DD/MM/YYYY</p>
-            </article>
-        </div>
-    
+        </section>
     </main>
 
-    <footer>
-
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Komsai.Org</h3>
+                    <p class="footer-description">
+                        Official organization of Computer Science students at the
+                        University of the Philippines.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Events</h4>
+                    <ul class="footer-links">
+                        <li><a href="#events-preview">Web Development Workshop</a></li>
+                        <li><a href="#events-preview">Annual Hackathon 2026</a></li>
+                        <li><a href="#events-preview">Career Fair</a></li>
+                        <li><a href="../events/index.html">Full Event Calendar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contacts</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@komsai.org">contact@komsai.org</a></li>
+                        <li><a href="tel:+639123456789">+63 912 345 6789</a></li>
+                        <li>University of the Philippines Visayas</li>
+                        <li>Iloilo City, Philippines</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Komsai.Org. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="news-script.js" defer></script>
 </body>
 
 </html>
