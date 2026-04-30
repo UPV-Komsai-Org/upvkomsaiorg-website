@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
       buttonText: {
         today: 'Today' 
       },
-      events: "./data/calendar-tags.json"
+      events: "./data/events.json"
     });
     calendar.render();
 });

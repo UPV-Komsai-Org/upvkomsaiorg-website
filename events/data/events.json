@@ -4,6 +4,8 @@
     "title": "Global Tech Summit 2026",
     "start": "2026-03-07",
     "end": "2026-03-07",
+    "url": "./details.html?id=evt-001",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 7, 2026",
     "author": "Sixus Sevenctus",
     "description_paragraphs": [
@@ -16,7 +18,8 @@
     "title": "Community Garden Launch",
     "start": "2026-03-12",
     "end": "2026-03-12",
-    "url": "event-details.html?id=evt-002",
+    "url": "./details.html?id=evt-002",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 12, 2026",
     "author": "Elena Moss",
     "description_paragraphs": [
@@ -29,7 +32,8 @@
     "title": "Midnight Jazz Session",
     "start": "2026-03-15T22:00:00",
     "end": "2026-03-15",
-    "url": "event-details.html?id=evt-003",
+    "url": "./details.html?id=evt-003",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 15, 2026",
     "author": "Marcus Vane",
     "description_paragraphs": [
@@ -42,7 +46,8 @@
     "title": "Frontend Frameworks Workshop",
     "start": "2026-03-20",
     "end": "2026-03-20",
-    "url": "event-details.html?id=evt-004",
+    "url": "./details.html?id=evt-004",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 20, 2026",
     "author": "Sarah Script",
     "description_paragraphs": [
@@ -55,7 +60,8 @@
     "title": "Art in the Park",
     "start": "2026-03-25",
     "end": "2026-03-25",
-    "url": "event-details.html?id=evt-005",
+    "url": "./details.html?id=evt-005",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 25, 2026",
     "author": "Julian Canvas",
     "description_paragraphs": [
@@ -68,7 +74,8 @@
     "title": "Charity Marathon",
     "start": "2026-03-30T07:00:00",
     "end": "2026-03-30",
-    "url": "event-details.html?id=evt-006",
+    "url": "./details.html?id=evt-006",
+    "image": "images/test-image.png",
     "date_formatted": "Mar. 30, 2026",
     "author": "Runner Prime",
     "description_paragraphs": [
