@@ -42,8 +42,16 @@ async function displayEventDetails() {
     // Set the simple fields
     container.querySelector('.displayed-event-title').textContent = eventDetails.title;
     container.querySelector('.displayed-event-author').textContent = `Written by ${eventDetails.author}`;
-    container.querySelector('.displayed-event-datetime').innerHTML = 
-        `${getRelativeTime(eventDetails.start, eventDetails.end)} <span class="small-circle"></span> ${eventDetails.date_formatted}`;
+    const datetime = container.querySelector('.displayed-event-datetime');
+    const separator = document.createElement('span');
+    separator.className = 'small-circle';
+    datetime.replaceChildren(
+        getRelativeTime(eventDetails.start, eventDetails.end),
+        ' ',
+        separator,
+        ' ',
+        eventDetails.date_formatted
+    );
 
     // Handle the paragraphs
     const paragraphs = eventDetails.description_paragraphs.map(text => {
