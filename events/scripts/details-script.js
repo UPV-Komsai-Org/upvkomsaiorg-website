@@ -62,7 +62,11 @@ function getRelativeTime(startStr, endStr) {
 
     const now = new Date();
     const start = new Date(startStr);
-    const end = new Date(endStr);
+    const end = endStr ? new Date(endStr) : start;
+
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+        return "Date unavailable";
+    }
 
     // Check if happening now
     if (now >= start && now <= end) {
