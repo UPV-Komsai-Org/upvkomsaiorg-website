@@ -1,0 +1,38 @@
+---
+interface Props {
+    href: string;
+    name: string;
+    icon?: string;
+    direction?: 'normal' | 'reverse' | null;
+    target?: string;
+    mode?: 'light' | 'accent' | 'dark' | null;
+    
+}
+const { href, name, icon, target, mode, direction } = Astro.props;
+---
+
+<a href={ href } class={`link ${ (mode === "accent") && "accentify"} ${ (mode === "light") && "lightify" } ${ (direction === "reverse") && "reverse" }`} target={target}>
+    {icon && <img src={icon}/> }
+    <h3>{name}</h3>
+</a>
+
+<style>
+    .link {
+        display: flex;
+        justify-content: content;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .link.reverse {
+        flex-direction: row-reverse;
+    }
+    .link img {
+        width: 20px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+    .link h3 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+</style>

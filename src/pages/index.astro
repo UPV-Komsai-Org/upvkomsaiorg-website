@@ -1,5 +1,10 @@
 ---
-
+import './../global.css';
+import HeroSection from '../components/HeroSection.astro';
+import Button from '../components/Button.astro';
+import Link from '../components/Link.astro';
+import { href } from './../state';
+href.set(`${import.meta.env.BASE_URL}/`);
 ---
 
 <html lang="en">
@@ -9,15 +14,25 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 		<title>Upv Komsai.Org</title>
 	</head>
 	<body>
-		<nav>
-			<a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-			<a href={`${import.meta.env.BASE_URL}/about`}>About</a>
-			<a href={`${import.meta.env.BASE_URL}/news`}>News</a>
-			<a href={`${import.meta.env.BASE_URL}/events`}>Events</a>
-		</nav>
-		<h1>Home</h1>
+		<HeroSection>
+			<div slot="heading">
+				<h2>Connect and Launch with </h2>
+				<h1>Komsai.Org</h1>
+			</div>			
+			<p slot="text">
+				The official organization of Computer Science students at the University of the Philippines Visayas.
+			</p>
+			<div slot="call-to-action">
+				<Button href={`${import.meta.env.BASE_URL}/projects/`} name='Learn More' mode='light'/>
+				<Link href={`${import.meta.env.BASE_URL}/projects/`} name='See Events' mode='light' icon={`${import.meta.env.BASE_URL}/assets/right-chevron.png`} direction={'reverse'}/>
+			</div>
+		</HeroSection>		
 	</body>
 </html>

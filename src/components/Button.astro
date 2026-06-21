@@ -1,0 +1,45 @@
+---
+interface Props {
+    href: string;
+    name: string;
+    icon?: string;
+    target?: string;
+    mode?: 'light' | 'dark' | null 
+}
+const { href, name, icon, target, mode } = Astro.props;
+---
+
+<a href={href} target={target}>
+    <button class=`${(mode == 'light') && 'lightify'}`>
+        {icon && <img src={icon}/>}
+        {name}
+    </button>
+</a>
+
+<style>
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1em 2.5em;
+        border: solid 3px var(--color-accent);
+        background-color: transparent;
+        font-family: 'Outfit', Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    button img {
+        width: 20px;
+        aspect-ratio: 1/1;    
+    }
+/* 
+    @media screen and (max-width: 576px) {
+        button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+        }
+    } */
+
+</style>
