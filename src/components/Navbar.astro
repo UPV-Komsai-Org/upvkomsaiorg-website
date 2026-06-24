@@ -1,0 +1,122 @@
+---
+/**
+ * === RULES IN DOCUMENTATION ===
+ * 
+ * [1] In web dev, there are components, layouts, states, and styles. For semantic
+ *      marking, follow the following @ labeling depending on the file:
+ *      @component  for components
+ *      @layout     for layouts
+ *      @state      for states
+ *      @style      for styles
+ * 
+ * [2] Every creation or update in documentations must set or update @last_updated
+ * 
+ * [3] Add a description of its function, properties, and children (for layouts and components)  @desc
+ *   
+ * [4] Ensure context or more important information using @notes
+ *
+ * [5] Then again, not documenting code is also fine, but that will introduce technical debt 
+ *      and information debt for future maintainers/devs
+ */
+
+
+/**
+ * @component Navbar
+ * @last_updated July 24, 2026
+ * @desc
+ *      The Navbar, or navigation bar, is the main way for users to navigate the site.  
+ *      It contains the Komsai Logo and the navigation links.
+ *
+ * @notes
+ *      [1] The global state/context [href] signifies the current route/link that the user is in.
+ *
+ *      [2] The [Route] type/interface contains link (for anchor hrefs) and name (for anchor body). 
+ *
+ *      [3] [routes] contains the navigation links to be displayed. Ensure that the link
+ *          field has ${import.meta.env.BASE_URL}/ for including the base/root directory 
+ *          (It is crucial for hosting purposes like hosting in Github Pages.).   
+ *
+ */
+import { href } from "./../state";
+interface Route {
+    link: string;
+    name: string;
+}
+const routes: Route[] = [
+    {
+        "link": `${import.meta.env.BASE_URL}/`,
+        "name": "Home"
+    },
+    {
+        "link": `${import.meta.env.BASE_URL}/about`,
+        "name": "About Us"
+    }, 
+    {
+        "link": `${import.meta.env.BASE_URL}/news`,
+        "name": "News"
+    }, 
+    {
+        "link": `${import.meta.env.BASE_URL}/events`,
+        "name": "Events"
+    }
+];
+---
+
+<div class="navbar-container">
+    <div class="navbar">
+        <div class="logo">
+            <img src={`${import.meta.env.BASE_URL}/public/assets/logos/komsai-logo-white.png`}/>
+            <div class="name">
+                <div class="subheading">UPV</div>
+                <div class="subheading bold">KOMSAI.ORG</div>
+            </div>
+        </div>
+        <nav>
+            {
+                routes.map(route => (
+                    <a href={route.link} class={`navlink ${ (href.get() === route.link) && 'current-route'} `}> {route.name} </a>
+                ))
+            }
+        </nav>
+    </div>
+</div>
+
+<style>
+    /* -- NAVBAR */
+    .navbar-container {
+        display: flex;
+        justify-content: center;
+        background-color: var(--color-bg-primary);
+        color: white;
+    } 
+    .navbar-container .navbar {
+        width: calc(100vw - 10rem);    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 0.25em;
+    }
+
+    /* -- NAVBAR LOGO */
+    .navbar-container .logo {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-container .logo img {
+        width: 64px;
+    }
+
+    /* -- NAVBAR NAVIGATION */
+    .navbar-container nav {
+        display: flex;
+        gap: 4rem
+    }
+    .navbar-container .navlink {
+        padding-block: 0.5em;
+        color: white;
+    }
+    .navbar-container .navlink.current-route {
+        border-bottom: solid 3px var(--color-accent); 
+    }
+        
+</style>

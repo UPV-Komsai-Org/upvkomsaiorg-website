@@ -1,8 +1,6 @@
 ---
 import './../global.css';
-import HeroSection from '../components/HeroSection.astro';
-import Button from '../components/Button.astro';
-import Link from '../components/Link.astro';
+import Navbar from '../components/Navbar.astro';
 import { href } from './../state';
 href.set(`${import.meta.env.BASE_URL}/`);
 ---
@@ -21,18 +19,6 @@ href.set(`${import.meta.env.BASE_URL}/`);
 		<title>Upv Komsai.Org</title>
 	</head>
 	<body>
-		<HeroSection>
-			<div slot="heading">
-				<h2>Connect and Launch with </h2>
-				<h1>Komsai.Org</h1>
-			</div>			
-			<p slot="text">
-				The official organization of Computer Science students at the University of the Philippines Visayas.
-			</p>
-			<div slot="call-to-action">
-				<Button href={`${import.meta.env.BASE_URL}/projects/`} name='Learn More' mode='light'/>
-				<Link href={`${import.meta.env.BASE_URL}/projects/`} name='See Events' mode='light' icon={`${import.meta.env.BASE_URL}/assets/right-chevron.png`} direction={'reverse'}/>
-			</div>
-		</HeroSection>		
+		<Navbar/>
 	</body>
 </html>

@@ -1,7 +1,13 @@
+
 :root {
-    --color-primary: #4C00B0E6;
+    --color-bg-primary: #4C00B0E6;
+    --color-bg-primary-transparent: #20004BB3;
     --color-accent: #06C9F0;
     --color-text: #323232; 
+    
+    --fw-semi-bold: 600;
+    --fw-medium: 500;
+    --fw-regular: 400;
 
     color: var(--color-text);
     font-size: 16px;
@@ -23,71 +29,48 @@ body {
     width: 100%;
     margin: auto;
 }
-body > * {
-    margin-bottom: 1rem;
-}
 
-a { 
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--color-text);
-    font-family: 'Outfit', Arial, Helvetica, sans-serif;
-    letter-spacing: 5%;
-}
+/* Default tag styles and utilclasses*/
 h1, .title {
     font-size: 3rem;
 }
 h2, .subtitle {
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: 2rem; 
+    font-weight: var(--fw-regular);
 }
 h3, .heading {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: var(--fw-regular);
 }
 h4, .subheading {
-    font-weight: 400;
-    font-size: 1rem;
+    font-weight: 1rem;
+    font-weight: var(--fw-regular);
     letter-spacing: 5%;
-}
+}   
 p, .text {
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-    font-weight: 300;
-    font-size: 1.1rem;
+    font-family: Helvetica, sans-serif;
+    font-weight: var(--fw-regular);
+    line-height: 1.5em;
 }
+a {
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: 5%;
+    color: var(--color-text);
+}
+
 .accentify {
-    color: var(--color-accent);
+    color: var(--color-accent) !important;
 }
-.lightify {
-    color: white;
+.primary {
+    color: var(--color-bg-primary) !important;
 }
-
-
-/* 
-@media screen and (max-width: 576px) {
-    body > * {
-        margin-bottom: 3rem;
-    }
+.lighten {
+    color: white !important;
+}  
+.darken {
+    color: var(--color-text) !important;
 }
-
-@media screen and (max-width: 960px) {       
-    h1, .title {
-        font-size: 2rem;
-    }
-    h2, .heading {
-        font-size: 1.5rem;
-    }
-    h3, .subheading {
-        font-weight: 400;
-        font-size: 1rem;
-    }
-    p, .text {
-        font-family: 'Inter', Arial, Helvetica, sans-serif;
-        font-weight: 200;
-        font-size: 1rem;
-    }
-} */
-
-
-
+.bold {
+    font-weight: bold !important;
+}
