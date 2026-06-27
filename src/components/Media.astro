@@ -96,7 +96,7 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         position: relative;
         display: flex;
         justify-content: center;
-        /* padding-block: 2rem; */
+        padding-block: 2rem;
     } 
     .media-container::before {
         content: '';
@@ -115,7 +115,7 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         z-index: 1;
     }
     .media-container .media {
-        width: 100vw;    
+        width: 100vw;   
         display: flex;
         justify-content: space-evenly;
         gap: 8rem;
@@ -128,7 +128,6 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
     /* -- MEDIA IMAGE */
     .media-container .media-image {
         width: 50%;
-        justify-self: right;
     }
     .media-container .media-image :global(img) {
         width: 100%;
@@ -140,17 +139,17 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
     /* -- MEDIA BODY */
     .media-container .media-body {
         width: 50%;
+        padding-left: 15vw;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
         justify-content: center;
         gap: 2rem;
     }
-    .media-container.reverse .media-body {
-        align-items: flex-start;
+    .media-container .media.reverse .media-body {
+        padding-left: 0vw;
+        padding-right: 15vw;
     }
     .media-container .content {
-        width: 45ch;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -158,13 +157,14 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 
     /* -- MEDIA CALL TO ACTION */
     .media-container .call-to-action {
-        width: 45ch;
+        width: 100%;
         display: flex;
         justify-content: flex-start;
     }
     .media-container :global(.call-to-action > *) {
-        width: 100%;
+        width: inherit;
         display: flex;
+        justify-content: flex-start;
     }
 
 
