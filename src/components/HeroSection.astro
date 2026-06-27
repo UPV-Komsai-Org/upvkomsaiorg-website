@@ -1,0 +1,127 @@
+---
+/**
+ * === RULES IN DOCUMENTATION ===
+ * 
+ * I. Components, Layouts, and Pages
+ * [1] In web dev, there are components, layouts, and page. For semantic
+ *      marking, follow the following @ labeling depending on the file:
+ *      @component  for components
+ *      @layout     for layouts
+ *      @page       for pages
+ * 
+ * [2] Every creation or update in documentations must set or update @last_updated
+ * 
+ * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
+ * 
+ * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
+ *      Explain each property, and describe each value it may require (for props whose type contains only few values).
+ *   
+ * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
+ * 
+ * [6] Ensure context or more important information using @notes
+ *
+ * 
+ * II. Styles
+ * [1] Styles must be arranged from outer container to inner container
+ * 
+ * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
+ *      or major sections of the component 
+ * 
+ * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
+ * 
+ * [4] You may put a description under the grouping component if you want, so that users understand 
+ *      how the style works.
+ *
+ *  
+ * III. No Documentation
+ * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
+ *      and information debt for future maintainers/devs
+ *         
+ */
+
+
+/**
+ * @component Hero Section
+ * @last_updated July 27, 2026
+ * @desc
+ *   This is a the main UI component that the user sees first when visiting the site. This is also called as the 
+ *   cover section. Moreover, the hero section is meant to take the user's attention.  
+ *    
+ * @prop 
+ *  @optional     
+ *      [1] "bg" is the background image to be used in the section. Valid values
+ *          for it are URLs of the image used.           
+ *      
+ * @notes
+ *      [1] The Hero Section is dark, however, it does not set anchor values (for Link and Button) to dark mode (so you have
+ *          to set that manually). Same thing with images.  
+ */
+
+interface Props {
+    bg?: string;
+}
+const { bg } = Astro.props;
+
+const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
+---
+<div class='hero-section-container' style={backgroundStyle}>
+    <div class="hero-section">
+        <div class="content">
+            <slot name="heading"/>
+            <slot name="text"/>
+        </div>
+        <div class="call-to-action">
+            <slot name="call-to-action"/>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* -- HERO SECTION */
+    .hero-section-container {
+        position: relative;
+        display: flex;
+        height: 80vh;
+        background-color: var(--color-bg-primary-transparent);
+        z-index: ;
+    } 
+    .hero-section-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        z-index: -1;
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .hero-section-container .hero-section {
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        gap: 3rem;
+        color: white;
+    }
+    
+    /* -- HERO SECTION BODY */
+    .hero-section-container .content {
+        width: 45ch;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* -- HERO SECTION CALL TO ACTION */
+    .hero-section-container .call-to-action {
+        width: 45ch;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .hero-section-container :global(.call-to-action > *) {
+        width: 100%;
+        display: flex;
+    }
+</style>

@@ -1,6 +1,7 @@
 ---
 import './../global.css';
 import Navbar from './../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
 import Media from './../components/Media.astro'
 import Button from './../components/Button.astro';
 import Line from './../components/Line.astro';
@@ -24,6 +25,27 @@ href.set(`${import.meta.env.BASE_URL}/`);
 	</head>
 	<body>
 		<Navbar/>
+		<HeroSection bg={`${import.meta.env.BASE_URL}/assets/komsai-banner-2.jpg`}>
+			<div slot="heading">
+				<h2>Connect and Launch with </h2>
+				<h1>Komsai.Org</h1>
+			</div>			
+			<p slot="text">
+				The official organization of Computer Science students at the University of the Philippines Visayas.
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='Learn More' 
+					mode="dark"
+				/>
+				<Link 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='Learn More' 
+					mode="dark"
+
+				/>
+			</div>
+		</HeroSection>
 		<Media bg={`${import.meta.env.BASE_URL}/assets/hyacine.avif`}>
 			<img src={`${import.meta.env.BASE_URL}/assets/hyacine.avif`} slot="image"/>
 			<div slot="heading">
