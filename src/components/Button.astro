@@ -64,8 +64,8 @@
  *      
  *      [5] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
  *          Here are the popular values: 
- *          [a] "self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
- *          [b] "blank" is for redirecting to a new tab (non-overriding)
+ *          [a] "_self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
+ *          [b] "_blank" is for redirecting to a new tab (non-overriding)
  *  
  *      [6] "mode" is light mode or dark mode. 
  *          [a] "light" (the default value) is always light background, dark text
@@ -79,6 +79,12 @@
  *      [2] "mode" prop only changes text color. The icon remains as is.     
  * 
  *      [3] "icon" image will always be set to a fixed width and height.
+ *      
+ *      [4] undefined checks were added with flowStyle and such to remove "undefined" as values in HTML attributes
+ *
+ *      [5] targer needs the underscore. "_blank" creates a new tab for every redirect with "_blank" (press of anchor tag), 
+ *          while "blank" creates a new tab for redirects, but every redirect with "blank" uses and shares that created tab.    
+ *          Add underscores since those are the typical values.
  */
 
 interface Props {
@@ -90,10 +96,13 @@ interface Props {
     mode?: "light" | "dark";
 }
 const { name, href, icon, flow, target, mode} = Astro.props;
+const flowStyle = flow || "";
+const targetAttr = target || "_blank";
+const modeStyle = mode || "";
 ---
 
-<a href={href} target={target}>
-    <button class={`button ${mode} ${flow}`}>
+<a href={href} target={targetAttr}>
+    <button class={`button ${modeStyle} ${flowStyle}`}>
         {icon && <img src={icon}/>}
         {name}
     </button>
