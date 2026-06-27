@@ -2,22 +2,43 @@
 /**
  * === RULES IN DOCUMENTATION ===
  * 
- * [1] In web dev, there are components, layouts, states, and styles. For semantic
+ * I. Components, Layouts, and Pages
+ * [1] In web dev, there are components, layouts, and page. For semantic
  *      marking, follow the following @ labeling depending on the file:
  *      @component  for components
  *      @layout     for layouts
- *      @state      for states
- *      @style      for styles
+ *      @page       for pages
  * 
  * [2] Every creation or update in documentations must set or update @last_updated
  * 
- * [3] Add a description of its function, properties, and children (for layouts and components)  @desc
+ * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
+ * 
+ * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
+ *      Explain each property, and describe each value it may require (for props whose type contains only few values).
  *   
- * [4] Ensure context or more important information using @notes
+ * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
+ * 
+ * [6] Ensure context or more important information using @notes
  *
- * [5] Then again, not documenting code is also fine, but that will introduce technical debt 
+ * 
+ * II. Styles
+ * [1] Styles must be arranged from outer container to inner container
+ * 
+ * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
+ *      or major sections of the component 
+ * 
+ * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
+ * 
+ * [4] You may put a description under the grouping component if you want, so that users understand 
+ *      how the style works.
+ *
+ *  
+ * III. No Documentation
+ * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
  *      and information debt for future maintainers/devs
+ *         
  */
+
 
 
 /**
@@ -28,11 +49,11 @@
  *      It contains the Komsai Logo and the navigation links.
  *
  * @notes
- *      [1] The global state/context [href] signifies the current route/link that the user is in.
+ *      [1] The global state/context "href" signifies the current route/link that the user is in.
  *
- *      [2] The [Route] type/interface contains link (for anchor hrefs) and name (for anchor body). 
+ *      [2] The "Route" type/interface contains link (for anchor hrefs) and name (for anchor body). 
  *
- *      [3] [routes] contains the navigation links to be displayed. Ensure that the link
+ *      [3] "routes" contains the navigation links to be displayed. Ensure that the link
  *          field has ${import.meta.env.BASE_URL}/ for including the base/root directory 
  *          (It is crucial for hosting purposes like hosting in Github Pages.).   
  *
@@ -52,7 +73,7 @@ const routes: Route[] = [
         "name": "About Us"
     }, 
     {
-        "link": `${import.meta.env.BASE_URL}/news`,
+        "link": `${import.meta.env.BASE_URsL}/news`,
         "name": "News"
     }, 
     {
@@ -64,7 +85,7 @@ const routes: Route[] = [
 
 <div class="navbar-container">
     <div class="navbar">
-        <div class="logo">
+        <div class="navbar-logo">
             <img src={`${import.meta.env.BASE_URL}/public/assets/logos/komsai-logo-white.png`}/>
             <div class="name">
                 <div class="subheading">UPV</div>
@@ -98,11 +119,11 @@ const routes: Route[] = [
     }
 
     /* -- NAVBAR LOGO */
-    .navbar-container .logo {
+    .navbar-container .navbar-logo {
         display: flex;
         align-items: center;
     }
-    .navbar-container .logo img {
+    .navbar-container .navbar-logo img {
         width: 64px;
     }
 

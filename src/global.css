@@ -8,6 +8,7 @@
     --fw-semi-bold: 600;
     --fw-medium: 500;
     --fw-regular: 400;
+    --fw-light: 300;
 
     color: var(--color-text);
     font-size: 16px;
@@ -43,19 +44,17 @@ h3, .heading {
     font-weight: var(--fw-regular);
 }
 h4, .subheading {
-    font-weight: 1rem;
+    font-size: 1rem;
     font-weight: var(--fw-regular);
-    letter-spacing: 5%;
 }   
 p, .text {
-    font-family: Helvetica, sans-serif;
-    font-weight: var(--fw-regular);
     line-height: 1.5em;
+    font-weight: 300;
 }
 a {
-    font-size: 1rem;
+    font-size: 0.875rem;
     text-decoration: none;
-    letter-spacing: 5%;
+    letter-spacing: 3%;
     color: var(--color-text);
 }
 

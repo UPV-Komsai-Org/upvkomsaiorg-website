@@ -1,0 +1,136 @@
+---
+/**
+ * === RULES IN DOCUMENTATION ===
+ * 
+ * I. Components, Layouts, and Pages
+ * [1] In web dev, there are components, layouts, and page. For semantic
+ *      marking, follow the following @ labeling depending on the file:
+ *      @component  for components
+ *      @layout     for layouts
+ *      @page       for pages
+ * 
+ * [2] Every creation or update in documentations must set or update @last_updated
+ * 
+ * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
+ * 
+ * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
+ *      Explain each property, and describe each value it may require (for props whose type contains only few values).
+ *   
+ * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
+ * 
+ * [6] Ensure context or more important information using @notes
+ *
+ * 
+ * II. Styles
+ * [1] Styles must be arranged from outer container to inner container
+ * 
+ * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
+ *      or major sections of the component 
+ * 
+ * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
+ * 
+ * [4] You may put a description under the grouping component if you want, so that users understand 
+ *      how the style works.
+ *
+ *  
+ * III. No Documentation
+ * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
+ *      and information debt for future maintainers/devs
+ *         
+ */
+
+
+/**
+ * @component Button
+ * @last_updated July 24, 2026
+ * @desc
+ *      The Button is a main/primary "call to action" UI component that redirects user 
+ *      to a page when pressed. Being a main/primary "call to action" component, it aims to grab
+ *      the attention of the user. 
+ * 
+ * @prop 
+ *  @required
+ *      [1] "name" is the label of the Button.
+ *      
+ *      [2] "href" is the same as the anchor "href", it redirects to a new link.  
+ * 
+ *  @optional     
+ *      [3] "icon" is the path/URL of an image media.
+ *      
+ *      [4] "flow" is the ordering of the "icon" and "name". By default, the flow is "name" "icon". 
+ *          Here are the ff. values:  
+ *          [a] "normal" (the default value) is the normal flow discussed earlier
+ *          [b] "reverse" is reversing the normal flow
+ *      
+ *      [5] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
+ *          Here are the popular values: 
+ *          [a] "self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
+ *          [b] "blank" is for redirecting to a new tab (non-overriding)
+ *  
+ *      [6] "mode" is light mode or dark mode. 
+ *          [a] "light" (the default value) is always light background, dark text
+ *          [b] "dark" is always dark background, light text
+ *      
+ * 
+ * @notes
+ *      [1] As of now, the URL must have a "import.meta.env.BASE_URL" at the start of the path/URL.
+ *          Refer to examples fromm the pages files.
+ * 
+ *      [2] "mode" prop only changes text color. The icon remains as is.     
+ * 
+ *      [3] "icon" image will always be set to a fixed width and height.
+ */
+
+interface Props {
+    name: string;
+    href: string;
+    icon?: string;
+    flow?: "normal" | "reverse"
+    target?: string;
+    mode?: "light" | "dark";
+}
+const { name, href, icon, flow, target, mode} = Astro.props;
+---
+
+<a href={href} target={target}>
+    <button class={`button ${mode} ${flow}`}>
+        {icon && <img src={icon}/>}
+        {name}
+    </button>
+</a>
+
+<style>
+    /* -- BUTTON 
+        .reverse and .dark style are values from the flow and
+        mode props, respectively.
+    */
+    
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        padding: 1em 2em;
+        border: solid 3px var(--color-accent);
+        background-color: transparent;
+        color: var(--color-text);
+        font-size: 0.875rem;
+        font-family: 'Outfit', Arial, Helvetica, sans-serif;
+        letter-spacing: 3%;
+        cursor: pointer;
+    }
+    .button.reverse {
+        flex-direction: row-reverse;
+    }
+    .button.dark {
+        color: white;
+    }
+    
+
+    /* -- BUTTON ICON */
+    .button img {
+        width: 20px;
+        aspect-ratio: 1/1;    
+    }
+
+</style>

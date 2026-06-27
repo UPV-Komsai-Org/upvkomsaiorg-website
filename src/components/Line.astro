@@ -1,0 +1,76 @@
+---
+/**
+ * === RULES IN DOCUMENTATION ===
+ * 
+ * I. Components, Layouts, and Pages
+ * [1] In web dev, there are components, layouts, and page. For semantic
+ *      marking, follow the following @ labeling depending on the file:
+ *      @component  for components
+ *      @layout     for layouts
+ *      @page       for pages
+ * 
+ * [2] Every creation or update in documentations must set or update @last_updated
+ * 
+ * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
+ * 
+ * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
+ *      Explain each property, and describe each value it may require (for props whose type contains only few values).
+ *   
+ * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
+ * 
+ * [6] Ensure context or more important information using @notes
+ *
+ * 
+ * II. Styles
+ * [1] Styles must be arranged from outer container to inner container
+ * 
+ * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
+ *      or major sections of the component 
+ * 
+ * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
+ * 
+ * [4] You may put a description under the grouping component if you want, so that users understand 
+ *      how the style works.
+ *
+ *  
+ * III. No Documentation
+ * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
+ *      and information debt for future maintainers/devs
+ *         
+ */
+
+
+/**
+ * @component Line
+ * @last_updated July 24, 2026
+ * @desc
+ *      Just a line for decoration or accent. Nothing more :<
+ * 
+ * @prop 
+ *  @required
+ *      [1] "width" is how long the line is. It takes in the same
+ *          syntax for Dimensions as normal CSS.
+ *  
+ *          Example: "67px, 6rem, 7ch, etc."
+ *      
+ * @notes
+ *      [1] Line will always be colored as its accent color
+ *      
+ */
+
+
+interface Props {
+    width: string;
+}
+const { width } = Astro.props
+---
+
+<hr class="line" style={`width: ${width};`}/>
+<style>
+    /* -- LINE */
+    .line {
+        border: solid 3px var(--color-accent);
+        width: 4rem;
+        margin-block: 0.5rem;
+    }
+</style>
