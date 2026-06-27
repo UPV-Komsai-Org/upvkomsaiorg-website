@@ -42,7 +42,7 @@
 
 /**
  * @component Link
- * @last_updated July 24, 2026
+ * @last_updated July 27, 2026
  * @desc
  *      The Link is a secondary "call to action" UI component that redirects user 
  *      to a page when pressed. Being a secondary "call to action" component, it aims to not give
@@ -72,7 +72,6 @@
  *          [a] "light" (the default value) is always light background, dark text
  *          [b] "dark" is always dark background, light text
  *      
- * 
  * @notes
  *      [1] As of now, the URL must have a "import.meta.env.BASE_URL" at the start of the path/URL.
  *          Refer to examples fromm the pages files.
@@ -80,6 +79,9 @@
  *      [2] "mode" prop only changes text color. The icon remains as is.     
  * 
  *      [3] "icon" image will always be set to a fixed width and height.
+ * 
+ *      [4] undefined checks were added with flowStyle and such to remove "undefined" as values in HTML attributes
+ *
  */
 
 interface Props {
@@ -91,9 +93,14 @@ interface Props {
     mode?: "light" | "dark";
 }
 const { name, href, icon, flow, target, mode} = Astro.props;
+
+const flowStyle = flow || "";
+const targetAttr = target || "";
+const modeStyle = mode || "";
+
 ---
 
-<a href={href} target={target} class={`link ${mode} ${flow}`}>
+<a href={href} target={targetAttr} class={`link ${modeStyle} ${flowStyle}`}>
     {icon && <img src={icon}/>}
     {name}
 </a>
