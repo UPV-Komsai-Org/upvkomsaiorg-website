@@ -101,7 +101,7 @@ const targetAttr = target || "_blank";
 const modeStyle = mode || "";
 ---
 
-<a href={href} target={targetAttr}>
+<a class="button-container" href={href} target={targetAttr}>
     <button class={`button ${modeStyle} ${flowStyle}`}>
         {icon && <img src={icon}/>}
         {name}
@@ -114,6 +114,10 @@ const modeStyle = mode || "";
         mode props, respectively.
     */
     
+    .button-container {
+        display: flex;
+        width: fit-content;
+    }
     .button {
         display: flex;
         align-items: center;
