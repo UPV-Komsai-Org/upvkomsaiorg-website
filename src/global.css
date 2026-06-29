@@ -1,9 +1,11 @@
 
 :root {
     --color-bg-primary: #4C00B0E6;
-    --color-bg-primary-transparent: #20004BB3;
+    --color-bg-primary-transparent: #20004BCC;
     --color-accent: #06C9F0;
     --color-text: #323232; 
+    --color-text-light: #676767;
+
     
     --fw-semi-bold: 600;
     --fw-medium: 500;
@@ -33,11 +35,12 @@ body {
 
 /* Default tag styles and utilclasses*/
 h1, .title {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 h2, .subtitle {
     font-size: 2rem; 
     font-weight: var(--fw-regular);
+    letter-spacing: 3%;
 }
 h3, .heading {
     font-size: 1.25rem;
@@ -49,10 +52,12 @@ h4, .subheading {
 }   
 p, .text {
     line-height: 1.5em;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
+
 }
 a {
-    font-size: 0.875rem;
+    font-weight: var(--fw-semi-bold);
     text-decoration: none;
     letter-spacing: 3%;
     color: var(--color-text);

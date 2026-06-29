@@ -1,29 +1,98 @@
 ---
+/**
+ * @component Card
+ * @last_updated July 29, 2026
+ * @desc
+ *      The Card is a UI component meant for displaying content by its many information as one. 
+ *      This contains the image, title, and text as well as an optional date and call to action. 
+ * 
+ * @prop 
+ *  @required
+ *      [1] "img" is the image of the component This is a path or a URL.
+ *      
+ *      [2] "title" is the heading of the component.  
+ * 
+ *      [3] "text" is the body of the component.
+ * 
+ *  @optional     
+ *      [4] "date" is extra information that is used for news and events to know the date of publishing.
+ *          As an optional information, the date element will be removed if there is no "date".  
+ *      
+ *      [5] "href" is the link of which the Card redirects when clicking the call to action. 
+ *          As an optional information, the call to aciton will be removed if there is no "href".            
+ * 
+ * @notes
+ *      [1] As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *          This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *          the pages files.
+ *  
+ *      [2] As stated in @prop, elements containing values from @optional may not be displayed when it is 
+ *          not defined.    
+ * 
+ */
+
 import Link from "./Link.astro"
+
+interface Props {
+    img: string;
+    title: string;
+    date?: string;
+    text: string;
+    href?: string;
+}
+const { img, title, date, text, href } = Astro.props;
 ---
 <div class="card-container">
-    <figure><img src={`${import.meta.env.BASE_URL}/assets/komsai-banner-2.jpg`}></figure>
-    <h3>Lorem Ipsum Dolor Sit Amet Constetuar </h3>
-    <p>06 June</p>
-    <p>Regular technical workshops on modern tools and core programming foundations.</p>
-    <div class="call-to-action bold"><Link href="/" name="See More" mode="accent"></div>
+    <figure><img src={img}></figure>
+    <div class="body">
+        <h3>{title}</h3>
+        {date && <p>{date}</p> }
+        <p>{text}</p>
+        {href && 
+            <div class="call-to-action bold">
+                <Link 
+                    href={href} 
+                    name="See More" 
+                    mode="accent"
+                    icon={`${import.meta.env.BASE_URL}/assets/icons/right-chevron-accent.png`}
+                    flow="reverse"
+                />
+            </div>
+        }
+    </div>
 </div>
 
 <style>
     .card-container {
+        /* -- CARD */
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+    
+        /* -- CARD IMAGE */
+        figure {
+            width: 100%;
+        }
+        figure img {
+            width: inherit;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* -- CARD BODY */
+        .body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .call-to-action {
+            display: flex;
+            justify-content: flex-end;
+            margin-block: 1.5rem;
+        }
     }
-    .card-container figure {
-        width: 100%;
-    }
-    .card-container figure img {
-        width: inherit;
-    }
-    .call-to-action {
-        display: flex;
-        justify-content: flex-end;
-    }
+
+
+    
 </style>

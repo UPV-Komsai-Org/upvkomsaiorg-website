@@ -66,24 +66,57 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 ---
 <div class='hero-section-container' style={backgroundStyle}>
     <div class="hero-section">
-        <div class="content">
+        <div class="hero-content">
             <slot name="heading"/>
             <slot name="text"/>
         </div>
-        <div class="call-to-action">
+        <div class="hero-call-to-action">
             <slot name="call-to-action"/>
         </div>
     </div>
 </div>
 
 <style>
-    /* -- HERO SECTION */
     .hero-section-container {
         position: relative;
         display: flex;
-        height: 80vh;
+        height: 100vh;
         background-color: var(--color-bg-primary-transparent);
         z-index: ;
+    
+        /* -- HERO SECTION */
+        .hero-section {
+            width: 100vw;
+            padding-top: 3rem;
+            padding-inline: 15vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            gap: 3rem;
+            color: white;
+        }
+        
+        /* -- HERO SECTION BODY */
+        .hero-content {
+            width: 45ch;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* -- HERO SECTION CALL TO ACTION */
+        .hero-call-to-action {
+            width: 45ch;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .hero-call-to-action > :global(*) {
+            width: 100%;
+            display: flex;
+            gap: 3rem;
+        }
+    
     } 
     .hero-section-container::before {
         content: '';
@@ -96,33 +129,5 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         background-position: center;
         background-repeat: no-repeat;
     }
-    .hero-section-container .hero-section {
-        width: 100vw;
-        padding-inline: 15vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: auto;
-        gap: 3rem;
-        color: white;
-    }
     
-    /* -- HERO SECTION BODY */
-    .hero-section-container .content {
-        width: 45ch;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    /* -- HERO SECTION CALL TO ACTION */
-    .hero-section-container .call-to-action {
-        width: 45ch;
-        display: flex;
-        justify-content: flex-start;
-    }
-    .hero-section-container :global(.call-to-action > *) {
-        width: 100%;
-        display: flex;
-    }
 </style>

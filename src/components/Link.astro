@@ -108,23 +108,28 @@ const modeStyle = mode || "";
     {name}
 </a>
 
-<style>
+<style> 
     /* -- LINK 
         .reverse and .dark style are values from the flow and
         mode props, respectively.
     */
-    
     .link {
         width: fit-content;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5em;
-        padding: 1em 2em;
         background-color: transparent;
-        font-size: 0.875rem;
+        font-size: 1rem;
+        font-weight: bold;
         font-family: 'Outfit', Arial, Helvetica, sans-serif;
         cursor: pointer;
+
+        /* -- LINK ICON */
+        img {
+            width: 0.875rem;
+            aspect-ratio: 1/1;    
+        }
     }
     .link.reverse {
         flex-direction: row-reverse;
@@ -137,10 +142,5 @@ const modeStyle = mode || "";
     }
     
 
-    /* -- LINK ICON */
-    .link img {
-        width: 20px;
-        aspect-ratio: 1/1;    
-    }
 
 </style>

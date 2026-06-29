@@ -45,12 +45,9 @@
  * @last_updated July 27, 2026
  * @desc
  *   This is a UI Component where there is a content  on one side, and a visual image element on
- *   another side. This component may not a visual element, and
- *   the user can change its bg or the horizonatal ordering of the content and visual element.  
- *   
- *   Example Format (I know it sucks TT):
- *   [Content]   [Visual Component (Images/Videos)]
- * 
+ *   another side. This component may not have a visual element, and the user can change its bg or 
+ *      the horizonatal ordering of the content and visual element.  
+ *  
  * @prop 
  *  @optional     
  *      [1] "bg" is the background image to be used in the section. Valid values
@@ -91,12 +88,71 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 </div>
 
 <style>
-    /* -- MEDIA */
     .media-container {
         position: relative;
         display: flex;
         justify-content: center;
         padding-block: 2rem;
+    
+        /* -- MEDIA */
+        .media {
+            position: relative;
+            z-index: 1;
+
+            width: 100vw;   
+            display: flex;
+            justify-content: space-evenly;
+            gap: 8rem;
+
+        }
+        .media.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        /* -- MEDIA IMAGE */
+        .media-image {
+            width: 50%;
+        }
+        .media-image :global(img) {
+            width: 100%;
+            aspect-ratio: 1/1;
+            max-height: 500px;    
+            object-fit: cover;
+        } 
+
+        /* -- MEDIA BODY */
+        .media-body {
+            width: 50%;
+            padding-left: 15vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .media.reverse .media-body {
+            padding-left: 0vw;
+            padding-right: 15vw;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* -- MEDIA CALL TO ACTION */
+        .call-to-action {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        :global(.call-to-action > *) {
+            width: inherit;
+            display: flex;
+            justify-content: flex-start;
+            margin-block: 1rem;
+        }
+
+
     } 
     .media-container::before {
         content: '';
@@ -110,62 +166,5 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         background-position: center;
         background-repeat: no-repeat;
     }
-    .media-container > .media {
-        position: relative;
-        z-index: 1;
-    }
-    .media-container .media {
-        width: 100vw;   
-        display: flex;
-        justify-content: space-evenly;
-        gap: 8rem;
-
-    }
-    .media-container .media.reverse {
-        flex-direction: row-reverse;
-    }
     
-    /* -- MEDIA IMAGE */
-    .media-container .media-image {
-        width: 50%;
-    }
-    .media-container .media-image :global(img) {
-        width: 100%;
-        aspect-ratio: 1/1;
-        max-height: 500px;    
-        object-fit: cover;
-    } 
-
-    /* -- MEDIA BODY */
-    .media-container .media-body {
-        width: 50%;
-        padding-left: 15vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-    }
-    .media-container .media.reverse .media-body {
-        padding-left: 0vw;
-        padding-right: 15vw;
-    }
-    .media-container .content {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    /* -- MEDIA CALL TO ACTION */
-    .media-container .call-to-action {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-    }
-    .media-container :global(.call-to-action > *) {
-        width: inherit;
-        display: flex;
-        justify-content: flex-start;
-    }
-
-
 </style>

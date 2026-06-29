@@ -22,7 +22,9 @@
  *
  * 
  * II. Styles
- * [1] Styles must be arranged from outer container to inner container
+ * [1] Styles must be arranged from outer container to inner container. The Outermost container element will nest
+ *      styles under it to prevent possible style collisions in other files. The only selectors not nested are 
+ *      pseudo-elements, pseudo-classes, and util classes of the Outermost container. 
  * 
  * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
  *      or major sections of the component 
@@ -63,10 +65,10 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 ---
 <section class='section-container' style={backgroundStyle}>
     <slot name="heading"/>
-    <div class="body">
+    <div class="section-body">
         <slot name="body"/>
     </div>
-    <div class="call-to-action">
+    <div class="section-call-to-action">
         <slot name="call-to-action"/>
     </div>
 </section>
@@ -78,9 +80,25 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: 2rem;
+        gap: 3rem;
         padding-inline: 15vw;
         padding-block: 5rem;
+    
+        /* SECTION BODY */
+        .section-body > :global(*) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding-inline: 2vw;
+        } 
+
+        /* SECTION CALL TO ACTION */
+        .section-call-to-action > :global(*) {
+            display: flex;
+            justify-content: center;
+            margin-block: 1rem;
+            
+        }
     } 
 
     .section-container::before {
@@ -96,16 +114,5 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         background-repeat: no-repeat;
     }
 
-    /* SECTION BODY */
-    .section-container .body > :global(*) {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 16px;
-    } 
-
-    /* SECTION CALL TO ACTION */
-    .section-container .call-to-action > :global(*) {
-        display: flex;
-        justify-content: center;
-    }
+    
 </style>

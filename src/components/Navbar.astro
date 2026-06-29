@@ -1,47 +1,5 @@
 ---
 /**
- * === RULES IN DOCUMENTATION ===
- * 
- * I. Components, Layouts, and Pages
- * [1] In web dev, there are components, layouts, and page. For semantic
- *      marking, follow the following @ labeling depending on the file:
- *      @component  for components
- *      @layout     for layouts
- *      @page       for pages
- * 
- * [2] Every creation or update in documentations must set or update @last_updated
- * 
- * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
- * 
- * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
- *      Explain each property, and describe each value it may require (for props whose type contains only few values).
- *   
- * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
- * 
- * [6] Ensure context or more important information using @notes
- *
- * 
- * II. Styles
- * [1] Styles must be arranged from outer container to inner container
- * 
- * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
- *      or major sections of the component 
- * 
- * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
- * 
- * [4] You may put a description under the grouping component if you want, so that users understand 
- *      how the style works.
- *
- *  
- * III. No Documentation
- * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
- *      and information debt for future maintainers/devs
- *         
- */
-
-
-
-/**
  * @component Navbar
  * @last_updated July 24, 2026
  * @desc
@@ -86,7 +44,7 @@ const routes: Route[] = [
 <div class="navbar-container">
     <div class="navbar">
         <div class="navbar-logo">
-            <img src={`${import.meta.env.BASE_URL}/public/assets/logos/komsai-logo-white.png`}/>
+            <img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-dark-mode.png`}/>
             <div class="name">
                 <div class="subheading">UPV</div>
                 <div class="subheading bold">KOMSAI.ORG</div>
@@ -103,42 +61,47 @@ const routes: Route[] = [
 </div>
 
 <style>
-    /* -- NAVBAR */
     .navbar-container {
+        position: fixed;
+        top: 0;
+        z-index: 1000;
         display: flex;
         justify-content: center;
         background-color: var(--color-bg-primary);
         color: white;
-    } 
-    .navbar-container .navbar {
-        width: 100vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-block: 0.25em;
-        padding-inline: 10vw;     
-    }
+    
+        /* -- NAVBAR */
+        .navbar {
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-block: 1.25em;
+            padding-inline: 10vw;     
+        }
 
-    /* -- NAVBAR LOGO */
-    .navbar-container .navbar-logo {
-        display: flex;
-        align-items: center;
-    }
-    .navbar-container .navbar-logo img {
-        width: 64px;
-    }
+        /* -- NAVBAR LOGO */
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .navbar-logo img {
+            width: 3rem;
+        }
 
-    /* -- NAVBAR NAVIGATION */
-    .navbar-container nav {
-        display: flex;
-        gap: 4rem
-    }
-    .navbar-container .navlink {
-        padding-block: 0.5em;
-        color: white;
-    }
-    .navbar-container .navlink.current-route {
-        border-bottom: solid 3px var(--color-accent); 
-    }
+        /* -- NAVBAR NAVIGATION */
+        nav {
+            display: flex;
+            gap: 4rem
+        }
+        .navlink {
+            padding-block: 0.5em;
+            color: white;
+        }
+        .navlink.current-route {
+            border-bottom: solid 3.5px var(--color-accent); 
+        }
         
+    }    
 </style>
