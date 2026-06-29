@@ -1,0 +1,35 @@
+---
+/**
+ * @component Line
+ * @last_updated July 24, 2026
+ * @desc
+ *      Just a line for decoration or accent. Nothing more :<
+ * 
+ * @prop 
+ *  @required
+ *      [1] "width" is how long the line is. It takes in the same
+ *          syntax for Dimensions as normal CSS.
+ *  
+ *          Example: "67px, 6rem, 7ch, etc."
+ *      
+ * @notes
+ *      [1] Line will always be colored as its accent color
+ *      
+ */
+
+
+interface Props {
+    width: string;
+}
+const { width } = Astro.props
+---
+
+<hr class="line" style={`width: ${width};`}/>
+<style>
+    /* -- LINE */
+    .line {
+        border: solid 3px var(--color-accent);
+        width: 4rem;
+        margin-block: 0.5rem;
+    }
+</style>

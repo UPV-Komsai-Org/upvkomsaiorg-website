@@ -1,0 +1,110 @@
+---
+/**
+ * @component Button
+ * @last_updated July 29, 2026
+ * @desc
+ *      The Button is a main/primary "call to action" UI component that redirects user 
+ *      to a page when pressed. Being a main/primary "call to action" component, it aims to grab
+ *      the attention of the user. 
+ * 
+ * @prop 
+ *  @required
+ *      [1] "name" is the label of the component.
+ *      
+ *      [2] "href" is the same as the anchor "href", it redirects to a new link.  
+ * 
+ *  @optional     
+ *      [3] "icon" is the path/URL of an image media.
+ *      
+ *      [4] "flow" is the ordering of the "icon" and "name". By default, the flow is [name] [icon]. 
+ *          Here are the ff. values:  
+ *          [a] "normal" (the default value) is the normal flow discussed earlier
+ *          [b] "reverse" is reversing the normal flow
+ *      
+ *      [5] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
+ *          Here are the popular values: 
+ *          [a] "_self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
+ *          [b] "_blank" is for redirecting to a new tab (non-overriding)
+ *  
+ *      [6] "mode" is light mode or dark mode. 
+ *          [a] "light" (the default value) is always light background, dark text
+ *          [b] "dark" is always dark background, light text
+ *      
+ * 
+ * @notes
+ *      [1] As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *          This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *          the pages files. 
+ * 
+ *      [2] "mode" prop only changes text color. The icon remains as is.     
+ * 
+ *      [3] "icon" image will always be set to a fixed width and height. 
+ *      
+ *      [4] undefined checks were added with flowStyle and such to remove "undefined" as values in HTML attributes
+ *
+ *      [5] target needs the underscore. target="_blank" creates a new tab for every redirect with target="_blank" 
+ *          while target="blank" creates a new tab for redirects, but every redirect with target="blank" uses and shares that created tab.    
+ *          Add underscores since those are the typical values.
+ * 
+ */
+
+interface Props {
+    name: string;
+    href: string;
+    icon?: string;
+    flow?: "normal" | "reverse"
+    target?: string;
+    mode?: "light" | "dark";
+}
+const { name, href, icon, flow, target, mode} = Astro.props;
+const flowStyle = flow || "";
+const targetAttr = target || "_blank";
+const modeStyle = mode || "";
+---
+
+<a class="button-container" href={href} target={targetAttr}>
+    <button class={`button ${modeStyle} ${flowStyle}`}>
+        {icon && <img src={icon}/>}
+        {name}
+    </button>
+</a>
+
+<style>
+    .button-container {
+        display: flex;
+        width: fit-content;
+   
+         /* -- BUTTON 
+            .reverse and .dark style are values from the flow and
+            mode props, respectively.
+        */ 
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.25em 3em;
+            border: solid 3.5px var(--color-accent);
+            background-color: transparent;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-family: 'Outfit', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            letter-spacing: 3%;
+            cursor: pointer;
+        }
+        .button.reverse {
+            flex-direction: row-reverse;
+        }
+        .button.dark {
+            color: white;
+        }
+
+        /* -- BUTTON ICON */
+        .button img {
+            width: 1.25rem;
+            aspect-ratio: 1/1;    
+        }
+    }
+    
+</style>

@@ -1,0 +1,170 @@
+---
+/**
+ * === RULES IN DOCUMENTATION ===
+ * 
+ * I. Components, Layouts, and Pages
+ * [1] In web dev, there are components, layouts, and page. For semantic
+ *      marking, follow the following @ labeling depending on the file:
+ *      @component  for components
+ *      @layout     for layouts
+ *      @page       for pages
+ * 
+ * [2] Every creation or update in documentations must set or update @last_updated
+ * 
+ * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
+ * 
+ * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
+ *      Explain each property, and describe each value it may require (for props whose type contains only few values).
+ *   
+ * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
+ * 
+ * [6] Ensure context or more important information using @notes
+ *
+ * 
+ * II. Styles
+ * [1] Styles must be arranged from outer container to inner container
+ * 
+ * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
+ *      or major sections of the component 
+ * 
+ * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
+ * 
+ * [4] You may put a description under the grouping component if you want, so that users understand 
+ *      how the style works.
+ *
+ *  
+ * III. No Documentation
+ * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
+ *      and information debt for future maintainers/devs
+ *         
+ */
+
+
+/**
+ * @component Media
+ * @last_updated July 27, 2026
+ * @desc
+ *   This is a UI Component where there is a content  on one side, and a visual image element on
+ *   another side. This component may not have a visual element, and the user can change its bg or 
+ *      the horizonatal ordering of the content and visual element.  
+ *  
+ * @prop 
+ *  @optional     
+ *      [1] "bg" is the background image to be used in the section. Valid values
+ *          for it are URLs of the image used.           
+ *      [2] "flow" is how the content and the image is ordered on the componenet. 
+ *          [a] "normal" is [content] [visual element]. This is also the default value.
+ *          [b] "reverse" is [visual element] [content].
+ * 
+ * @notes
+ *      [1] Because grids don't have a reverse flow, a flexbox was used on the .media div component
+ *          which contains the content div (.media-body) and the visual element figure (.media-image). 
+ */
+
+interface Props {
+    bg?: string;
+    flow?: 'normal' | 'reverse';
+}
+const { bg, flow } = Astro.props;
+
+const flowStyle = flow || '';
+const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
+---
+<div class='media-container'  style={backgroundStyle}>
+    <div class={`media ${flowStyle}`}>
+        <div class="media-body">
+            <div class="content">
+                <slot name="heading"/>
+                <slot name="text"/>
+            </div>
+            <div class="call-to-action">
+                <slot name="call-to-action"/>
+            </div>
+        </div>
+        <figure class="media-image">
+            <slot name="image"/>
+        </figure>
+    </div>
+</div>
+
+<style>
+    .media-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding-block: 2rem;
+    
+        /* -- MEDIA */
+        .media {
+            position: relative;
+            z-index: 1;
+
+            width: 100vw;   
+            display: flex;
+            justify-content: space-evenly;
+            gap: 8rem;
+
+        }
+        .media.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        /* -- MEDIA IMAGE */
+        .media-image {
+            width: 50%;
+        }
+        .media-image :global(img) {
+            width: 100%;
+            aspect-ratio: 1/1;
+            max-height: 500px;    
+            object-fit: cover;
+        } 
+
+        /* -- MEDIA BODY */
+        .media-body {
+            width: 50%;
+            padding-left: 15vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .media.reverse .media-body {
+            padding-left: 0vw;
+            padding-right: 15vw;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* -- MEDIA CALL TO ACTION */
+        .call-to-action {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+        :global(.call-to-action > *) {
+            width: inherit;
+            display: flex;
+            justify-content: flex-start;
+            margin-block: 1rem;
+        }
+
+
+    } 
+    .media-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        opacity: 0.07;
+        z-index: 0;
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+</style>

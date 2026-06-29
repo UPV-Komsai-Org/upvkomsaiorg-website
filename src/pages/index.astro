@@ -1,5 +1,9 @@
 ---
+import './../global.css';
+import { Button, Card, Footer, HeroSection, Line, Media, Link, Navbar, Section } from './../components/Component';
+import { href } from './../state';
 
+href.set(`${import.meta.env.BASE_URL}/`);
 ---
 
 <html lang="en">
@@ -9,15 +13,125 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 		<title>Upv Komsai.Org</title>
 	</head>
 	<body>
-		<nav>
-			<a href={`${import.meta.env.BASE_URL}/`}>Home</a>
-			<a href={`${import.meta.env.BASE_URL}/about`}>About</a>
-			<a href={`${import.meta.env.BASE_URL}/news`}>News</a>
-			<a href={`${import.meta.env.BASE_URL}/events`}>Events</a>
-		</nav>
-		<h1>Home</h1>
+		<Navbar/>
+		<HeroSection bg={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner.jpg`}>
+			<div slot="heading">
+				<h2>Connect and Launch with </h2>
+				<h1>Komsai.Org</h1>
+			</div>			
+			<p slot="text">
+				The official organization of Computer Science students at the University of the Philippines Visayas.
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='Learn More' 
+					mode="dark"
+				/>
+				<Link 
+                    href={`${import.meta.env.BASE_URL}/events`} 
+					name='See Events' 
+					icon={`${import.meta.env.BASE_URL}/assets/icons/right-chevron-dark-mode.png`}
+					flow="reverse"
+					mode='dark'
+                />
+			</div>
+		</HeroSection>
+		<Media bg={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}>
+			<img src={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`} slot="image"/>
+			<div slot="heading">
+				<img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-light-mode.png`} width="100" height="100"/>
+				<h2 class="bold">About Us</h2>
+				<Line width='3rem'/>
+			</div>			
+			<p slot="text">
+				Komsai.Org is the organization for Computer Science students at the University of the Philippines Visayas. We foster a community of builders and problem-solvers through technology, innovation, and academic excellence.			</p>
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='Learn More' 
+				/> 
+			</div>
+		</Media>
+		<Section>
+			<div slot="heading">
+				<h2 class="bold">What We Do?</h2>
+				<Line width='4rem'/>
+			</div>
+			<div slot="body">
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Workshop & Training"	
+					text="Regular technical workshops on modern tools and core programming foundations."
+				/>
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Competitions"	
+					text="Join coding competitions and hackathons that sharpen practical skills."
+				/>
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Community Projects"	
+					text="Collaborate on impactful projects that serve students and local communities."
+				/>
+			</div>
+		</Section>
+		<Media bg={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}>
+			<img src={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`} slot="image"/>
+			<div slot="heading">
+				<img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-light-mode.png`} width="100" height="100"/>
+				<h2 class="bold">Get Updated on Future Events</h2>
+				<Line width='3rem'/>
+			</div>			
+			<p slot="text">Komsai.Org hosts regular events that aims to provide opportunities for learning Computer Science concepts and trends in technology along with networking sessions and annual hackathons. </p>
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/events`} 
+					name='See Events' 
+				/> 
+			</div>
+		</Media>
+		<Section>
+			<div slot="heading">
+				<h2 class="bold">Latest News</h2>
+				<Line width='4rem'/>
+			</div>
+			<div slot="body">
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Lorem Ipsum Dolor Sit Amet Constetuar"	
+					date="09 June"
+					text="Regular technical workshops on modern tools and core programming foundations."
+					href={`${import.meta.env.BASE_URL}/about`}
+				/>
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Lorem Ipsum Dolor Sit Amet Constetuar"	
+					date="09 June"
+					text="Regular technical workshops on modern tools and core programming foundations."
+					href={`${import.meta.env.BASE_URL}/about`}
+				/>
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}
+					title="Lorem Ipsum Dolor Sit Amet Constetuar"	
+					date="09 June"
+					text="Regular technical workshops on modern tools and core programming foundations."
+					href={`${import.meta.env.BASE_URL}/about`}
+				/>
+			</div>
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='See More News' 
+				/>
+			</div>
+		</Section>
+		<Footer/>
 	</body>
 </html>

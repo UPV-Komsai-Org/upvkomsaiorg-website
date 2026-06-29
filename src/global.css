@@ -1,0 +1,80 @@
+
+:root {
+    --color-bg-primary: #4C00B0E6;
+    --color-bg-primary-transparent: #20004BCC;
+    --color-accent: #06C9F0;
+    --color-text: #323232; 
+    --color-text-light: #676767;
+
+    
+    --fw-semi-bold: 600;
+    --fw-medium: 500;
+    --fw-regular: 400;
+    --fw-light: 300;
+
+    color: var(--color-text);
+    font-size: 16px;
+    font-family: 'Outfit', Arial, Helvetica, sans-serif;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+body, body * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    margin: auto;
+}
+
+/* Default tag styles and utilclasses*/
+h1, .title {
+    font-size: 3.5rem;
+}
+h2, .subtitle {
+    font-size: 2rem; 
+    font-weight: var(--fw-regular);
+    letter-spacing: 3%;
+}
+h3, .heading {
+    font-size: 1.25rem;
+    font-weight: var(--fw-regular);
+}
+h4, .subheading {
+    font-size: 1rem;
+    font-weight: var(--fw-regular);
+}   
+p, .text {
+    line-height: 1.5em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+
+}
+a {
+    font-weight: var(--fw-semi-bold);
+    text-decoration: none;
+    letter-spacing: 3%;
+    color: var(--color-text);
+}
+
+.accentify {
+    color: var(--color-accent) !important;
+}
+.primary {
+    color: var(--color-bg-primary) !important;
+}
+.lighten {
+    color: white !important;
+}  
+.darken {
+    color: var(--color-text) !important;
+}
+.bold {
+    font-weight: bold !important;
+}
