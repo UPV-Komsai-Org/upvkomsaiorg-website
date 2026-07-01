@@ -44,6 +44,13 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         display: flex;
         justify-content: center;
         padding-block: 2rem;
+
+        @media screen and (max-width: 960px) {
+            padding-block: 5rem;
+        }
+        @media screen and (max-width: 576px) {
+            padding-block: 0.5rem;
+        }
     
         &::before {
             content: '';
@@ -62,25 +69,36 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         .media {
             position: relative;
             z-index: 1;
-
             width: 100vw;   
             display: flex;
             justify-content: space-evenly;
             gap: 8rem;
-
+            
+            @media screen and (max-width: 960px) {
+                gap: 2rem;
+            }
+            @media screen and (max-width: 576px) {
+                flex-direction: column-reverse;
+            }
         }
         .media.reverse {
             flex-direction: row-reverse;
+            @media screen and (max-width: 576px) {
+                flex-direction: column-reverse;
+            }
         }
         
         /* -- MEDIA IMAGE */
         .media-image {
             width: 50%;
+            @media screen and (max-width: 960px) {
+                width: 100%;
+            }
         }
         .media-image :global(img) {
             width: 100%;
-            aspect-ratio: 1/1;
-            max-height: 500px;    
+            aspect-ratio: 4/3;
+            min-height: 300px;    
             object-fit: cover;
         } 
 
@@ -92,10 +110,21 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
             flex-direction: column;
             justify-content: center;
             gap: 2rem;
+
+            @media screen and (max-width: 960px) {
+                padding-left: 5vw;
+            }
+            @media screen and (max-width: 576px) {
+                width: 100%;
+            }
+            
         }
         .media.reverse .media-body {
             padding-left: 0vw;
             padding-right: 15vw;
+            @media screen and (max-width: 960px) {
+                padding-right: 5vw;
+            }
         }
         .content {
             display: flex;

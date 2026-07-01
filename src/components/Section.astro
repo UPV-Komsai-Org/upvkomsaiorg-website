@@ -7,8 +7,6 @@
  *              number of columns in the grid can be specified by the "columns" prop.   
  * 
  * @prop {string} bg - The background image to be used in the section. Valid values for it are URLs of the image used.
- * @prop {number} columns - The number of columns in the grid. Default is 1. If more than 1 is specified, 
- *              the grid will be displayed in multiple columns.
  * 
  * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
  *        This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
@@ -19,13 +17,11 @@ interface Props {
     bg?: string;
     columns?: number;
 }
-const { bg, columns } = Astro.props;
+const { bg } = Astro.props;
 
 const backgroundStyle = bg ? `--bg-image: url('${bg}')` : null;
-const columnStyle = columns ? `--columns: ${columns}` : null;
-const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';'); 
 ---
-<section class='section-container' style={combinedStyles}>
+<section class='section-container' style={backgroundStyle}>
     <slot name="heading"/>
     <div class="section-body">
         <slot name="body"/>
@@ -45,6 +41,11 @@ const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';');
         gap: 3rem;
         padding-inline: 15vw;
         padding-block: 5rem;
+
+        @media screen and (max-width: 960px) {
+            padding-inline: 5vw;
+            padding-block: 5rem;
+        }
     
         &::before {
             content: '';
@@ -62,7 +63,7 @@ const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';');
         /* SECTION BODY */
         .section-body > :global(*) {
             display: grid;
-            grid-template-columns: repeat(var(--columns, 1), minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             padding-inline: 2vw;
         } 
