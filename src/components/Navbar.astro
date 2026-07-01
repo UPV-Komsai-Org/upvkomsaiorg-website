@@ -31,7 +31,7 @@ const routes: Route[] = [
         "name": "About Us"
     }, 
     {
-        "link": `${import.meta.env.BASE_URsL}/news`,
+        "link": `${import.meta.env.BASE_URL}/news`,
         "name": "News"
     }, 
     {
@@ -43,13 +43,13 @@ const routes: Route[] = [
 
 <div class="navbar-container">
     <div class="navbar">
-        <div class="navbar-logo">
+        <a href={`${import.meta.env.BASE_URL}/`} class="navbar-logo">
             <img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-dark-mode.png`}/>
             <div class="name">
                 <div class="subheading">UPV</div>
                 <div class="subheading bold">KOMSAI.ORG</div>
             </div>
-        </div>
+        </a>
         <nav>
             {
                 routes.map(route => (
@@ -85,6 +85,7 @@ const routes: Route[] = [
             display: flex;
             align-items: center;
             gap: 1rem;
+        color: white !important;
         }
         .navbar-logo img {
             width: 3rem;

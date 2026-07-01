@@ -65,13 +65,15 @@ interface Props {
     bg?: string;
     flow?: 'normal' | 'reverse';
 }
-const { bg, flow } = Astro.props;
+const { 
+    bg, 
+    flow = ""
+} = Astro.props;
 
-const flowStyle = flow || '';
 const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 ---
 <div class='media-container'  style={backgroundStyle}>
-    <div class={`media ${flowStyle}`}>
+    <div class={`media ${flow}`}>
         <div class="media-body">
             <div class="content">
                 <slot name="heading"/>

@@ -14,19 +14,22 @@
  *      [2] "href" is the same as the anchor "href", it redirects to a new link.  
  * 
  *  @optional     
- *      [3] "icon" is the path/URL of an image media.
+ * 
+ *      [3] "download" is an attribute that sets the default name of the file downloaded.
+ *
+ *      [4] "icon" is the path/URL of an image media.
  *      
- *      [4] "flow" is the ordering of the "icon" and "name". By default, the flow is [name] [icon]. 
+ *      [5] "flow" is the ordering of the "icon" and "name". By default, the flow is [name] [icon]. 
  *          Here are the ff. values:  
  *          [a] "normal" (the default value) is the normal flow discussed earlier
  *          [b] "reverse" is reversing the normal flow
  *      
- *      [5] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
+ *      [6] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
  *          Here are the popular values: 
  *          [a] "_self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
  *          [b] "_blank" is for redirecting to a new tab (non-overriding)
  *  
- *      [6] "mode" is light mode or dark mode. 
+ *      [7] "mode" is light mode or dark mode. 
  *          [a] "light" (the default value) is always light background, dark text
  *          [b] "dark" is always dark background, light text
  *      
@@ -45,25 +48,30 @@
  *      [5] target needs the underscore. target="_blank" creates a new tab for every redirect with target="_blank" 
  *          while target="blank" creates a new tab for redirects, but every redirect with target="blank" uses and shares that created tab.    
  *          Add underscores since those are the typical values.
- * 
+ *      
  */
 
 interface Props {
     name: string;
     href: string;
+    download?: string;
     icon?: string;
     flow?: "normal" | "reverse"
     target?: string;
     mode?: "light" | "dark";
 }
-const { name, href, icon, flow, target, mode} = Astro.props;
-const flowStyle = flow || "";
-const targetAttr = target || "_blank";
-const modeStyle = mode || "";
+const { 
+    name, 
+    href, 
+    download, 
+    icon, 
+    flow = "", 
+    target = "_self", 
+    mode = ""
+} = Astro.props;
 ---
-
-<a class="button-container" href={href} target={targetAttr}>
-    <button class={`button ${modeStyle} ${flowStyle}`}>
+<a class="button-container" href={href} download={download} target={target}>
+    <button class={`button ${mode} ${flow}`}>
         {icon && <img src={icon}/>}
         {name}
     </button>

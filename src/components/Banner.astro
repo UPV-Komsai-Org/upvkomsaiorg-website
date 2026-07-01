@@ -1,6 +1,4 @@
 ---
-import { undefined } from 'astro:schema';
-
 /**
  * === RULES IN DOCUMENTATION ===
  * 
@@ -24,9 +22,7 @@ import { undefined } from 'astro:schema';
  *
  * 
  * II. Styles
- * [1] Styles must be arranged from outer container to inner container. The Outermost container element will nest
- *      styles under it to prevent possible style collisions in other files. The only selectors not nested are 
- *      pseudo-elements, pseudo-classes, and util classes of the Outermost container. 
+ * [1] Styles must be arranged from outer container to inner container
  * 
  * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
  *      or major sections of the component 
@@ -45,72 +41,69 @@ import { undefined } from 'astro:schema';
 
 
 /**
- * @component Section
- * @last_updated July 28, 2026
+ * @component Banner
+ * @last_updated July 1, 2026
  * @desc
- *   This is a general one-column UI component that contains a header, body, and a call to action.
- *   The body is a grid that can take in a single component or multiple elements in a row.   
- * 
+ *   The Banner is an image that is placed on the top of the page. This component also allows you to have
+ *   a text element as well to indicate the title or the name of the page.
+ *    
  * @prop 
  *  @optional     
  *      [1] "bg" is the background image to be used in the section. Valid values
  *          for it are URLs of the image used.           
- *       
+ *      
+ * @notes
+ *      [1] This is just mini Hero Section. Also the Banner is also there to give variety to the top parts of the page.
  */
 
-interface Props {   
+interface Props {
     bg?: string;
-    columns?: number;
 }
-const { bg, columns } = Astro.props;
+const { bg } = Astro.props;
 
-const backgroundStyle = bg ? `--bg-image: url('${bg}')` : null;
-const columnStyle = columns ? `--columns: ${columns}` : null;
-const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';'); 
+const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 ---
-<section class='section-container' style={combinedStyles}>
-    <slot name="heading"/>
-    <div class="section-body">
-        <slot name="body"/>
+<div class='banner-container' style={backgroundStyle}>
+    <div class="banner">
+        <div class="banner-content">
+            <slot name="heading"/>
+            <slot name="text"/>
+        </div>
     </div>
-    <div class="section-call-to-action">
-        <slot name="call-to-action"/>
-    </div>
-</section>
+</div>
 
 <style>
-    /* -- SECTION */
-    .section-container {
+    .banner-container {
         position: relative;
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        gap: 3rem;
-        padding-inline: 15vw;
-        padding-block: 5rem;
-    
-        /* SECTION BODY */
-        .section-body > :global(*) {
-            display: grid;
-            grid-template-columns: repeat(var(--columns, 1), minmax(0, 1fr));
-            gap: 2rem;
-            padding-inline: 2vw;
-        } 
-
-        /* SECTION CALL TO ACTION */
-        .section-call-to-action > :global(*) {
+        background-color: var(--color-bg-primary-transparent);
+        padding-block: 6vw 3vw;
+        
+        /* -- BANNER SECTION */
+        .banner {
+            width: 100vw;
+            padding-top: 3rem;
+            padding-inline: 15vw;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            margin-block: 1rem;
-            
+            margin: auto;
+            gap: 3rem;
+            color: white;
+        }
+        
+        /* -- BANNER SECTION BODY */
+        .banner-content {
+            width: 45ch;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
     } 
-
-    .section-container::before {
+    .banner-container::before {
         content: '';
         position: absolute;
         inset: 0;
-        opacity: 0.07;
         background: inherit;
         z-index: -1;
         background-image: var(--bg-image);
@@ -118,6 +111,5 @@ const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';');
         background-position: center;
         background-repeat: no-repeat;
     }
-
     
 </style>
