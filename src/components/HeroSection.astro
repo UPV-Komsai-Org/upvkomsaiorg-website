@@ -34,7 +34,6 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         display: flex;
         height: 100vh;
         background-color: var(--color-bg-primary-transparent);
-        z-index: ;
     
         &::before {
             content: '';
@@ -59,11 +58,17 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
             margin: auto;
             gap: 3rem;
             color: white;
+            @media screen and (max-width: 960px) {
+                & {
+                    padding-inline: 5vw;
+                }
+            }
         }
+
         
         /* -- HERO SECTION BODY */
         .hero-content {
-            width: 45ch;
+            width: min(45ch, 100%);
             display: flex;
             flex-direction: column;
             gap: 2rem;
@@ -71,7 +76,7 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
 
         /* -- HERO SECTION CALL TO ACTION */
         .hero-call-to-action {
-            width: 45ch;
+            width: min(45ch, 100%);
             display: flex;
             justify-content: flex-start;
         }

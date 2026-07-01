@@ -62,6 +62,13 @@ const {
         display: grid;
         grid-template-columns: 15rem 1fr;
         gap: 2rem;
+
+
+        @media screen and (max-width: 576px) {
+            grid-template-columns: 1fr;
+            gap: 0rem;
+            margin-bottom: 2rem;
+        }
     
         /* -- LIST OBJECT IMAGE */
         figure {
@@ -93,6 +100,10 @@ const {
         
         .list-call-to-action {
             margin-block: 1.5rem;
+            @media screen and (max-width: 576px) {
+                display: flex;
+                justify-content: flex-end;
+            }
         }
 
     }

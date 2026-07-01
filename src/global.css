@@ -86,3 +86,18 @@ a {
 .bold {
     font-weight: bold !important;
 }
+
+
+/* BREAKPOINTS */
+@media screen and (max-width: 960px) {
+    :root { font-size: 14px; }
+    
+    h1, .title {
+        font-size: 2.5rem;
+    }
+    h2, .subtitle {
+        font-size: 1.75rem; 
+        font-weight: var(--fw-regular);
+        letter-spacing: 3%;
+    }
+}

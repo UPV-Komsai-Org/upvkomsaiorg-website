@@ -30,7 +30,7 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         position: relative;
         display: flex;
         background-color: var(--color-bg-primary-transparent);
-        padding-block: 6vw 3vw;
+        padding-block: 5rem 3rem;
       
         &::before {
             content: '';
@@ -54,15 +54,22 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
             justify-content: center;
             margin: auto;
             gap: 3rem;
-            color: white;
+            color: white;        
+            @media screen and (max-width: 960px) {
+                & {
+                    padding-inline: 5vw;
+                }
+            }
         }
         
         /* -- BANNER SECTION BODY */
         .banner-content {
-            width: 45ch;
+            width: min(45ch, 100%);
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
+
     } 
+
 </style>

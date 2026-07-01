@@ -45,14 +45,40 @@ const routes: Route[] = [
                 <div class="subheading bold">KOMSAI.ORG</div>
             </div>
         </a>
+        <figure class="hamburger"><img src={`${import.meta.env.BASE_URL}/assets/icons/hamburger.png`}/></figure>
         <nav>
-            {
-                routes.map(route => (
+            <figure class="close-button hidden"><img src={`${import.meta.env.BASE_URL}/assets/icons/close.png`}/></figure>
+            {routes.map(route => (
                     <a href={route.link} class={`navlink ${ (href.get() === route.link) && 'current-route'} `}> {route.name} </a>
                 ))
             }
         </nav>
     </div>
+    <script>
+        const logo = document.querySelector(".navbar-container .navbar-logo")!;
+        const navbar = document.querySelector(".navbar-container nav")!;
+        const hamburgerButton = document.querySelector(".navbar-container .hamburger")!;
+        const closeButton = document.querySelector(".navbar-container .close-button")!;
+
+        function toggleMenu(isOpen: boolean) {
+            if (isOpen) {
+                navbar.classList.add("is-open");
+                hamburgerButton.classList.add("hidden");
+                closeButton.classList.remove("hidden");
+                logo.classList.add("hidden");
+            } else {
+                navbar.classList.remove("is-open");
+                hamburgerButton.classList.remove("hidden");
+                closeButton.classList.add("hidden");
+                logo.classList.remove("hidden");
+
+            }
+        }
+        hamburgerButton.addEventListener("click", () => toggleMenu(true));
+        closeButton.addEventListener("click", () => toggleMenu(false));
+        window.matchMedia('(min-width : 786px)').addEventListener("change", () => toggleMenu(false));
+
+    </script>
 </div>
 
 <style>
@@ -80,7 +106,13 @@ const routes: Route[] = [
             display: flex;
             align-items: center;
             gap: 1rem;
-        color: white !important;
+            color: white !important;
+
+            @media screen and (max-width: 768px) {
+                &.hidden {
+                    display: none;
+                }
+            }
         }
         .navbar-logo img {
             width: 3rem;
@@ -89,15 +121,53 @@ const routes: Route[] = [
         /* -- NAVBAR NAVIGATION */
         nav {
             display: flex;
-            gap: 4rem
+            gap: 4rem;
+            align-items: center;
+            
+            @media screen and (max-width: 768px) {
+                display: none;
+                width: 100%;
+                &.is-open {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding-block: 1rem;
+                }
+            }
         }
+        .navbar figure img {
+            width: 16px;
+            aspect-ratio: 1/1;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: none;
+            @media screen and (max-width: 768px) {
+                display: block;
+                &.hidden {
+                    display: none;                    
+                }
+            }
+        }
+
+        .close-button {
+            display: none;
+            @media screen and (max-width: 768px) {
+                display: flex;
+                align-self: flex-end;
+                &.hidden {
+                    display: none;                    
+                }
+            }
+        }
+
         .navlink {
             padding-block: 0.5em;
             color: white;
         }
         .navlink.current-route {
             border-bottom: solid 3.5px var(--color-accent); 
-        }
-        
+        }        
     }    
 </style>

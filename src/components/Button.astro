@@ -63,13 +63,20 @@ const {
             font-weight: bold;
             letter-spacing: 3%;
             cursor: pointer;
+            @media screen and (max-width: 960px) {
+                & {
+                    padding: 1em 2.5em;
+                }
+            }
         }
+        
         .button.reverse {
             flex-direction: row-reverse;
         }
         .button.dark {
             color: white;
         }
+        
 
         /* -- BUTTON ICON */
         .button img {

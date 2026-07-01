@@ -29,14 +29,29 @@
 </footer>
 <style>
     .footer {
-        display: flex;
+        display: grid;
+        grid-template-columns: 2fr 1fr 5fr;
         justify-content: space-between;
-        gap: 2rem;
+        gap: 3rem;
         padding-block: 3rem;
         padding-inline: 15vw;
         background-color: var(--color-bg-primary);
         color: white;
 
+        @media screen and (max-width: 960px) {
+            & {
+                padding-inline: 5vw;
+                gap: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            justify-items: left;
+            padding-block: 6rem;
+        }
+        
         /* -- FOOTER LOGO */
         .footer-logo {
             display: flex;
