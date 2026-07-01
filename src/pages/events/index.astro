@@ -1,5 +1,8 @@
 ---
+import './../../global.css';
 import { href } from './../../state';
+import { Banner, Button, Card, Footer, Line, Media, Link, Navbar, Section, ListObject } from './../../components/Component';
+
 href.set(`${import.meta.env.BASE_URL}/events`);
 ---
 
@@ -16,5 +19,78 @@ href.set(`${import.meta.env.BASE_URL}/events`);
 		<title>Komsai Events</title>
 	</head>
 	<body>
+		<Navbar/>
+		<Banner bg={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner.jpg`}>
+			<div slot="heading">
+				<h2>Komsai</h2>
+				<h1>Events</h1>
+			</div>	
+		</Banner>
+		<Media bg={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`}>
+			<img src={`${import.meta.env.BASE_URL}/assets/banners/komsai-banner-2.jpg`} slot="image"/>
+			<div slot="heading">
+				<img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-light-mode.png`} width="100" height="100"/>
+				<h2 class="bold">About Us</h2>
+				<Line width='3rem'/>
+			</div>			
+			<p slot="text">
+				Komsai.Org is the organization for Computer Science students at the University of the Philippines Visayas. We foster a community of builders and problem-solvers through technology, innovation, and academic excellence.			</p>
+			<div slot="call-to-action">
+				<Button 
+					href={`${import.meta.env.BASE_URL}/about`} 
+					name='Learn More' 
+				/> 
+			</div>
+		</Media>
+		<Section>
+			<div slot="heading">
+				<h2 class="bold">Upcoming Events</h2>
+				<Line width='3rem'/>
+			</div>
+			<div slot="body">
+				<ListObject 
+					img={`${import.meta.env.BASE_URL}/assets/banners/workshop.jpg`}
+					title="Workshop & Training"	
+					text="Regular technical workshops on modern tools and core programming foundations."
+					date='June 10'
+					href='/'
+				/>
+				<ListObject 
+					img={`${import.meta.env.BASE_URL}/assets/banners/workshop.jpg`}
+					title="Workshop & Training"	
+					text="Regular technical workshops on modern tools and core programming foundations."
+					date='June 10'
+					href='/'
+				/>
+				<ListObject 
+					img={`${import.meta.env.BASE_URL}/assets/banners/workshop.jpg`}
+					title="Workshop & Training"	
+					text="Regular technical workshops on modern tools and core programming foundations."
+					date='June 10'
+					href='/'
+				/>
+			</div>
+		</Section>
+		<Section columns={2}>
+			<div slot="heading">
+				<h2 class="bold">Previous Events</h2>
+				<Line width='4rem'/>
+			</div>
+			<div slot="body">
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/workshop.jpg`}
+					title="Workshop & Training"	
+					text="Regular technical workshops on modern tools and core programming foundations."
+					href='/'
+				/>
+				<Card 
+					img={`${import.meta.env.BASE_URL}/assets/banners/competition.jpg`}
+					title="Competitions"	
+					text="Join coding competitions and hackathons that sharpen practical skills."
+					href='/'
+				/>
+			</div>
+		</Section>
+		<Footer/>
 	</body>
 </html>

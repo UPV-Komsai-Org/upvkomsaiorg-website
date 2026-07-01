@@ -91,19 +91,24 @@
 interface Props {
     name: string;
     href: string;
+    download?: string;
     icon?: string;
     flow?: "normal" | "reverse"
     target?: string;
     mode?: "light" | "dark" | "accent";
 }
-const { name, href, icon, flow, target, mode} = Astro.props;
-
-const flowStyle = flow || "";
-const targetAttr = target || "_blank";
-const modeStyle = mode || "";
+const { 
+    name, 
+    href, 
+    download,
+    icon, 
+    flow, 
+    target, 
+    mode
+} = Astro.props;
 ---
 
-<a href={href} target={targetAttr} class={`link ${modeStyle} ${flowStyle}`}>
+<a href={href} target={target} download={download} class={`link ${mode} ${flow}`}>
     {icon && <img src={icon}/>}
     {name}
 </a>
