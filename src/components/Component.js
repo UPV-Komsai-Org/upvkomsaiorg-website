@@ -1,6 +1,9 @@
 /**
- * This contains all the components for importing instead of importing them one by one.
- */
+ * @file Component
+ * @description Contains all the components for importing instead of importing them one by one. 
+ * @note Everytime a new component is created, it must be added here, and the export statement must be updated.
+ * @note Please line them up in alphabetical order for easier reading and searching.
+*/
 
 import Banner from './Banner.astro';
 import Button from './Button.astro';

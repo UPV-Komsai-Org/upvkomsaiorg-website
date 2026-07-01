@@ -1,24 +1,13 @@
 ---
 /**
  * @component Footer
- * @last_updated July 29, 2026
- * @desc
- *      The Footer is the UI component found at the bottom of the page. It includes the logo, quick links, and 
- *      other important informations (contacts and such).
- *
- * @notes
- *      [1] The global state/context "href" signifies the current route/link that the user is in.
- *
- *      [2] The "Route" type/interface contains link (for anchor hrefs) and name (for anchor body). 
- *
- *      [3] "routes" contains the navigation links to be displayed. Ensure that the link
- *          field has ${import.meta.env.BASE_URL}/ for including the base/root directory 
- *          (It is crucial for hosting purposes like hosting in Github Pages.).   
- *
+ * @description The Footer is the UI component found at the bottom of the page. It includes the logo, quick links, and other information about the organization. 
+ *              It is a global component that is used in all pages.
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
  */
 ---
 <footer class="footer">
-    <div class="logo">
+    <div class="footer-logo">
         <img src={`${import.meta.env.BASE_URL}/assets/logos/komsai-dark-mode.png`}/>
         <h4 class="bold">UPV KOMSAI.ORG</h4>
     </div>    
@@ -28,11 +17,11 @@
         <a href={`${import.meta.env.BASE_URL}/news`}>Events</a>
         <a href={`${import.meta.env.BASE_URL}/about`}>About Us</a>
     </nav>
-    <div class="info-section">
+    <div class="footer-info-section">
         <p>All Rights Reserved @ 2026</p>
         <p>College of Arts and Sciences | University of the Philippines Visayas</p>
         <p>Miagao, 5023</p>
-        <div class="socials">
+        <div class="footer-socials">
             <a href="https://www.facebook.com/UPVKomsai.Org/"><img src={`${import.meta.env.BASE_URL}/assets/icons/facebook.png`}/></a>
             <a href="https://www.youtube.com/@upvkomsaiorg3517"><img src={`${import.meta.env.BASE_URL}/assets/icons/youtube.png`}/></a>
         </div>
@@ -49,13 +38,13 @@
         color: white;
 
         /* -- FOOTER LOGO */
-        .logo {
+        .footer-logo {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1rem;
         }
-        .logo img {
+        .footer-logo img {
             width: 6rem;
         }
         
@@ -70,18 +59,18 @@
         }
 
         /* -- FOOTER INFO SECTIOn */
-        .info-section {
+        .footer-info-section {
             display: flex;				
             flex-direction: column;
             gap: 0.5rem;
         }
-        .socials {
+        .footer-socials {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-block: 0.5rem;
         }
-        .socials img {
+        .footer-socials img {
             width: 1.5rem;
         }
     }

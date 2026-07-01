@@ -1,23 +1,12 @@
 ---
 /**
  * @component Line
- * @last_updated July 24, 2026
- * @desc
- *      Just a line for decoration or accent. Nothing more :<
+ * @description A simple line component that is used for decoration or accent.
+ * @prop {width} width - The width of the line. It takes in the same syntax for Dimensions as normal CSS. Required.
+ *                       Example: "67px, 6rem, 7ch, etc."
+ * @note Line will always be colored as the accent color. See the CSS variable "--color-accent" for the color of the line in global.css
  * 
- * @prop 
- *  @required
- *      [1] "width" is how long the line is. It takes in the same
- *          syntax for Dimensions as normal CSS.
- *  
- *          Example: "67px, 6rem, 7ch, etc."
- *      
- * @notes
- *      [1] Line will always be colored as its accent color
- *      
  */
-
-
 interface Props {
     width: string;
 }

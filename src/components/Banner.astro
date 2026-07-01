@@ -1,59 +1,12 @@
 ---
 /**
- * === RULES IN DOCUMENTATION ===
- * 
- * I. Components, Layouts, and Pages
- * [1] In web dev, there are components, layouts, and page. For semantic
- *      marking, follow the following @ labeling depending on the file:
- *      @component  for components
- *      @layout     for layouts
- *      @page       for pages
- * 
- * [2] Every creation or update in documentations must set or update @last_updated
- * 
- * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
- * 
- * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
- *      Explain each property, and describe each value it may require (for props whose type contains only few values).
- *   
- * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
- * 
- * [6] Ensure context or more important information using @notes
- *
- * 
- * II. Styles
- * [1] Styles must be arranged from outer container to inner container
- * 
- * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
- *      or major sections of the component 
- * 
- * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
- * 
- * [4] You may put a description under the grouping component if you want, so that users understand 
- *      how the style works.
- *
- *  
- * III. No Documentation
- * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
- *      and information debt for future maintainers/devs
- *         
- */
-
-
-/**
  * @component Banner
- * @last_updated July 1, 2026
- * @desc
- *   The Banner is an image that is placed on the top of the page. This component also allows you to have
- *   a text element as well to indicate the title or the name of the page.
- *    
- * @prop 
- *  @optional     
- *      [1] "bg" is the background image to be used in the section. Valid values
- *          for it are URLs of the image used.           
- *      
- * @notes
- *      [1] This is just mini Hero Section. Also the Banner is also there to give variety to the top parts of the page.
+ * @description A banner component that has a background image and a content section. Usually placed on top of a page.    
+ * @prop {string} bg - The background image URL for the banner. Optional.
+ * 
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *        This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *        the pages files.
  */
 
 interface Props {
@@ -78,10 +31,22 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
         display: flex;
         background-color: var(--color-bg-primary-transparent);
         padding-block: 6vw 3vw;
-        
+      
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            z-index: -1;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         /* -- BANNER SECTION */
         .banner {
-            width: 100vw;
+            width: 100%;
             padding-top: 3rem;
             padding-inline: 15vw;
             display: flex;
@@ -100,16 +65,4 @@ const backgroundStyle = bg ? `--bg-image: url('${bg}')` : undefined;
             gap: 2rem;
         }
     } 
-    .banner-container::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: inherit;
-        z-index: -1;
-        background-image: var(--bg-image);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    
 </style>
