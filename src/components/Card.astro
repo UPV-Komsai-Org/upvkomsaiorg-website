@@ -1,36 +1,19 @@
 ---
 /**
  * @component Card
- * @last_updated July 29, 2026
- * @desc
- *      The Card is a UI component meant for displaying content by its many information as one. 
- *      This contains the image, title, and text as well as an optional date and call to action. 
- * 
- * @prop 
- *  @required
- *      [1] "img" is the image of the component This is a path or a URL.
- *      
- *      [2] "title" is the heading of the component.  
- * 
- *      [3] "text" is the body of the component.
- * 
- *  @optional     
- *      [4] "date" is extra information that is used for news and events to know the date of publishing.
- *          As an optional information, the date element will be removed if there is no "date".  
- *      
- *      [5] "href" is the link of which the Card redirects when clicking the call to action. 
- *          As an optional information, the call to aciton will be removed if there is no "href".            
- * 
- * @notes
- *      [1] As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
- *          This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
- *          the pages files.
+ * @descriprion The card component is a UI component that groups content of many types into one.
+ * @prop {string} img - The image of the component. This is a path or a URL. Required.
+ * @prop {string} title - The heading of the component. Required.   
+ * @prop {string} text - The body of the component. Required.
+ * @prop {string} date - The date of the component. Optional.
+ * @prop {string} href - The link of the component. Optional.
  *  
- *      [2] As stated in @prop, elements containing values from @optional may not be displayed when it is 
- *          not defined.    
- * 
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *        This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *        the pages files.
+ *  
+ * @note Elements containing values from @optional may not be displayed when it is not defined.    
  */
-
 import Link from "./Link.astro"
 
 interface Props {
@@ -40,7 +23,13 @@ interface Props {
     text: string;
     href?: string;
 }
-const { img, title, date, text, href } = Astro.props;
+const { 
+    img, 
+    title, 
+    date, 
+    text, 
+    href 
+} = Astro.props;
 ---
 <div class="card-container">
     <figure><img src={img}></figure>

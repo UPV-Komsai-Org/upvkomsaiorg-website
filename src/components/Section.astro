@@ -1,61 +1,18 @@
 ---
-import { undefined } from 'astro:schema';
-
-/**
- * === RULES IN DOCUMENTATION ===
- * 
- * I. Components, Layouts, and Pages
- * [1] In web dev, there are components, layouts, and page. For semantic
- *      marking, follow the following @ labeling depending on the file:
- *      @component  for components
- *      @layout     for layouts
- *      @page       for pages
- * 
- * [2] Every creation or update in documentations must set or update @last_updated
- * 
- * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
- * 
- * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
- *      Explain each property, and describe each value it may require (for props whose type contains only few values).
- *   
- * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
- * 
- * [6] Ensure context or more important information using @notes
- *
- * 
- * II. Styles
- * [1] Styles must be arranged from outer container to inner container. The Outermost container element will nest
- *      styles under it to prevent possible style collisions in other files. The only selectors not nested are 
- *      pseudo-elements, pseudo-classes, and util classes of the Outermost container. 
- * 
- * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
- *      or major sections of the component 
- * 
- * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
- * 
- * [4] You may put a description under the grouping component if you want, so that users understand 
- *      how the style works.
- *
- *  
- * III. No Documentation
- * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
- *      and information debt for future maintainers/devs
- *         
- */
-
-
 /**
  * @component Section
- * @last_updated July 28, 2026
- * @desc
- *   This is a general one-column UI component that contains a header, body, and a call to action.
- *   The body is a grid that can take in a single component or multiple elements in a row.   
+ * @description The Section component is a general-purpose UI component that can be used to create sections of a webpage.
+ *              This is a general one-column UI component that contains a header, body, and a call to action.
+ *              The body is a grid that can take in a single component or multiple elements in a row. The 
+ *              number of columns in the grid can be specified by the "columns" prop.   
  * 
- * @prop 
- *  @optional     
- *      [1] "bg" is the background image to be used in the section. Valid values
- *          for it are URLs of the image used.           
- *       
+ * @prop {string} bg - The background image to be used in the section. Valid values for it are URLs of the image used.
+ * @prop {number} columns - The number of columns in the grid. Default is 1. If more than 1 is specified, 
+ *              the grid will be displayed in multiple columns.
+ * 
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *        This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *        the pages files.
  */
 
 interface Props {   
@@ -89,6 +46,19 @@ const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';');
         padding-inline: 15vw;
         padding-block: 5rem;
     
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.07;
+            background: inherit;
+            z-index: -1;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         /* SECTION BODY */
         .section-body > :global(*) {
             display: grid;
@@ -105,19 +75,4 @@ const combinedStyles = [backgroundStyle, columnStyle].filter(Boolean).join(';');
             
         }
     } 
-
-    .section-container::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        opacity: 0.07;
-        background: inherit;
-        z-index: -1;
-        background-image: var(--bg-image);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    
 </style>

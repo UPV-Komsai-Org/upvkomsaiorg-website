@@ -1,17 +1,12 @@
 ---
 /**
  * @component Navbar
- * @last_updated July 24, 2026
- * @desc
- *      The Navbar, or navigation bar, is the main way for users to navigate the site.  
- *      It contains the Komsai Logo and the navigation links.
+ * @description The Navbar, or navigation bar, is the main way for users to navigate the site. 
+ *              It contains the Komsai Logo and the navigation links. This is a global component that is used in all pages of the site.
  *
- * @notes
- *      [1] The global state/context "href" signifies the current route/link that the user is in.
- *
- *      [2] The "Route" type/interface contains link (for anchor hrefs) and name (for anchor body). 
- *
- *      [3] "routes" contains the navigation links to be displayed. Ensure that the link
+ * @note the global state/context "href" signifies the current route/link that the user is in.
+ * @note "Route" type/interface contains link (for anchor hrefs) and name (for anchor body). 
+ * @note "routes" contains the navigation links to be displayed. Ensure that the link
  *          field has ${import.meta.env.BASE_URL}/ for including the base/root directory 
  *          (It is crucial for hosting purposes like hosting in Github Pages.).   
  *

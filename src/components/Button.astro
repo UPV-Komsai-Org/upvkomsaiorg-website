@@ -1,56 +1,19 @@
 ---
 /**
  * @component Button
- * @last_updated July 29, 2026
- * @desc
- *      The Button is a main/primary "call to action" UI component that redirects user 
- *      to a page when pressed. Being a main/primary "call to action" component, it aims to grab
- *      the attention of the user. 
+ * @description The button component is a main/primary "call to action" UI component that allows for page redirection and such. It aims to grab the user's attention.
+ * @prop {string} name - The label of the button. Required.
+ * @prop {string} href - The link to redirect to. Required.
+ * @prop {string} download - The default name of the file downloaded. Optional.
+ * @prop {string} icon - The path/URL of an image media. Optional.
+ * @prop {'normal' | 'reverse'} flow - The ordering of the "icon" and "name". By default, the flow is [name] [icon]. Optional.
+ * @prop {string} target - The target attribute for the link. Optional.
+ * @prop {'light' | 'dark'} mode - The mode of the button ("light" or "dark"). Does not change icon color. Optional.
  * 
- * @prop 
- *  @required
- *      [1] "name" is the label of the component.
- *      
- *      [2] "href" is the same as the anchor "href", it redirects to a new link.  
- * 
- *  @optional     
- * 
- *      [3] "download" is an attribute that sets the default name of the file downloaded.
- *
- *      [4] "icon" is the path/URL of an image media.
- *      
- *      [5] "flow" is the ordering of the "icon" and "name". By default, the flow is [name] [icon]. 
- *          Here are the ff. values:  
- *          [a] "normal" (the default value) is the normal flow discussed earlier
- *          [b] "reverse" is reversing the normal flow
- *      
- *      [6] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
- *          Here are the popular values: 
- *          [a] "_self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
- *          [b] "_blank" is for redirecting to a new tab (non-overriding)
- *  
- *      [7] "mode" is light mode or dark mode. 
- *          [a] "light" (the default value) is always light background, dark text
- *          [b] "dark" is always dark background, light text
- *      
- * 
- * @notes
- *      [1] As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
- *          This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
- *          the pages files. 
- * 
- *      [2] "mode" prop only changes text color. The icon remains as is.     
- * 
- *      [3] "icon" image will always be set to a fixed width and height. 
- *      
- *      [4] undefined checks were added with flowStyle and such to remove "undefined" as values in HTML attributes
- *
- *      [5] target needs the underscore. target="_blank" creates a new tab for every redirect with target="_blank" 
- *          while target="blank" creates a new tab for redirects, but every redirect with target="blank" uses and shares that created tab.    
- *          Add underscores since those are the typical values.
- *      
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *        This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *        the pages files.
  */
-
 interface Props {
     name: string;
     href: string;

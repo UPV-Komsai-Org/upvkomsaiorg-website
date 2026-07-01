@@ -1,22 +1,30 @@
+/**
+ * @file global.css
+ * @description This file contains the global styles for the website.
+ * @note import this file in every page in pages to apply the styles globally.
+ */
 
 :root {
+    /* -- COLORS */
     --color-bg-primary: #4C00B0E6;
     --color-bg-primary-transparent: #20004BCC;
     --color-accent: #06C9F0;
     --color-text: #323232; 
     --color-text-light: #676767;
 
-    
+    /* -- FONT WEIGHTS */
     --fw-semi-bold: 600;
     --fw-medium: 500;
     --fw-regular: 400;
     --fw-light: 300;
 
+    /* -- DEFAULT STYLE */
     color: var(--color-text);
     font-size: 16px;
     font-family: 'Outfit', Arial, Helvetica, sans-serif;
 }
 
+/* -- ROOT DOCUMENT STYLES */
 html {
     display: flex;
     justify-content: center;
@@ -33,7 +41,7 @@ body {
     margin: auto;
 }
 
-/* Default tag styles and utilclasses*/
+/* -- DEFAULT TAG STYLES AND UTIL CLASSES */
 h1, .title {
     font-size: 3.5rem;
 }

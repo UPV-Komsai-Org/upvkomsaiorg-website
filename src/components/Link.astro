@@ -1,91 +1,22 @@
 ---
 /**
- * === RULES IN DOCUMENTATION ===
- * 
- * I. Components, Layouts, and Pages
- * [1] In web dev, there are components, layouts, and page. For semantic
- *      marking, follow the following @ labeling depending on the file:
- *      @component  for components
- *      @layout     for layouts
- *      @page       for pages
- * 
- * [2] Every creation or update in documentations must set or update @last_updated
- * 
- * [3] Add a description of its function, properties, and children (for layouts and components) using @desc.
- * 
- * [4] Add @prop if it has properties. Have @required for requried properties and @optional for optional/nullable properties.
- *      Explain each property, and describe each value it may require (for props whose type contains only few values).
- *   
- * [5] Add @children for layouts or components with the slot attribute. Explain the needed content.
- * 
- * [6] Ensure context or more important information using @notes
- *
- * 
- * II. Styles
- * [1] Styles must be arranged from outer container to inner container
- * 
- * [2] Group styles under a comment. Grouping is usually done to the root (outermost) tag 
- *      or major sections of the component 
- * 
- * [3] Format for the Grouping comment is "-- COMMENT NAME" for easy finding.
- * 
- * [4] You may put a description under the grouping component if you want, so that users understand 
- *      how the style works.
- *
- *  
- * III. No Documentation
- * [1] Then again, not documenting code is also fine, but that will introduce technical debt 
- *      and information debt for future maintainers/devs
- *         
- */
-
-
-/**
  * @component Link
- * @last_updated July 27, 2026
- * @desc
- *      The Link is a secondary "call to action" UI component that redirects user 
- *      to a page when pressed. Being a secondary "call to action" component, it aims to not give
- *      as much attention to the user. Although, Link may also be a compact way to work with anchor tags
- *      if need be. 
+ * @description The link is either a container for the anchor tab in component form or a secondary "call to action" UI component.
+ *              Link is similar to the Button component. 
+ * @prop {string} name - The name of the Link. It is the text that will be displayed in the link. Required.
+ * @prop {string} href - The same as the anchor "href", it redirects to a new link. Required.
+ * @prop {string} download - The same as the anchor "download", it downloads a file from the link. Optional.
+ * @prop {string} icon - The path/URL of an image media. Optional.
+ * @prop {'normal' | 'reverse'} flow - The ordering of the "icon" and "name". By default, the flow is "name" "icon". Optional.
+ * @prop {string} target - The same as the anchor tag's "target" attribute. It determines where in the browser it will redirect. Optional.
+ * @prop {'light' | 'dark' | 'accent'} mode - The mode of the link. It can be "light", "dark", or "accent". Optional.
  * 
- * @prop 
- *  @required
- *      [1] "name" is the name of the Link.
- *      
- *      [2] "href" is the same as the anchor "href", it redirects to a new link.  
+ * @note As of now, relative paths must have "import.meta.env.BASE_URL" at the start of the path/URL.
+ *       This is due to hosting sometimes being confused with URLs and paths. Refer to examples from 
+ *       the pages files. 
+ * @note Unlike Button, the "mode" prop takes in an 'accent' value. The accent color is the same as the CSS variable 
+ *       "--color-accent" in global.css.
  * 
- *  @optional     
- *      [3] "icon" is the path/URL of an image media.
- *      
- *      [4] "flow" is the ordering of the "icon" and "name". By default, the flow is "name" "icon". 
- *          Here are the ff. values:  
- *          [a] "normal" (the default value) is the normal flow discussed earlier
- *          [b] "reverse" is reversing the normal flow
- *      
- *      [5] "target" is the same as the anchor tag's "target" attribute. It determines where in the browser it will redirect.
- *          Here are the popular values: 
- *          [a] "_self" (the default value) is for redirecting in the same tab (overriding the same tab where you clicked the Button)
- *          [b] "_blank" is for redirecting to a new tab (non-overriding)
- *  
- *      [6] "mode" is light mode, dark mode, or an accent. 
- *          [a] "light" (the default value) is always light background, dark text
- *          [b] "dark" is always dark background, light text
- *          [c] "accent" will change only the color of the link to the accent color. 
- *      
- * @notes
- *      [1] As of now, the URL must have a "import.meta.env.BASE_URL" at the start of the path/URL.
- *          Refer to examples fromm the pages files.
- * 
- *      [2] "mode" prop only changes text color. The icon remains as is.     
- * 
- *      [3] "icon" image will always be set to a fixed width and height.
- * 
- *      [4] undefined checks were added with flowStyle and such to remove "undefined" as values in HTML attributes
- *
- *      [5] targer needs the underscore. "_blank" creates a new tab for every redirect with "_blank" (press of anchor tag), 
- *          while "blank" creates a new tab for redirects, but every redirect with "blank" uses and shares that created tab.    
- *          Add underscores since those are the typical values.
  */
 
 interface Props {
@@ -130,22 +61,20 @@ const {
         font-family: 'Outfit', Arial, Helvetica, sans-serif;
         cursor: pointer;
 
+        &.reverse {
+            flex-direction: row-reverse;
+        }
+        &.dark {
+            color: white;
+        }
+        &.accent {
+            color: var(--color-accent);
+        }
+    
         /* -- LINK ICON */
         img {
             width: 0.875rem;
             aspect-ratio: 1/1;    
         }
     }
-    .link.reverse {
-        flex-direction: row-reverse;
-    }
-    .link.dark {
-        color: white;
-    }
-    .link.accent {
-        color: var(--color-accent);
-    }
-    
-
-
 </style>
